@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>focus error</title>
+<script>
+
+	function lower(el){
+		// 기존에 입력된 value 값이 알파벳이라면 소문자로 변경하여 저장
+		el.value = el.value.toLowerCase();
+	}
+	
+	function upper(el){
+		console.log(el);
+		// 매개변수로 전달된 입력 태그 요소에 작성 된 값.
+		let v = el.value;
+		// 문자열의 알파벳을 대문자로 변환하여 반환
+		el.value = v.toUpperCase();
+	}
+</script>
+</head>
+<body>
+	<h1>focus blur</h1>
+	<!-- focus - focus를 얻었을 때 -->
+	<!-- blur - focus를 잃었을 때 -->
+	<input type="text" onfocus="upper(this);" onblur="lower(this);" />
+	<br/>
+	<h1>focusin focusout</h1>
+	<input type="text" onfocusin="upper(this);" onfocusout="lower(this);" />
+	<h1>event 전파, event 버블링</h1>
+	<p>
+		이벤트 전파 : 이벤트 버블링(Event Bubbling) <br/>
+		특정 화면 요소에서 이벤트가 발생했을 때 해당 이벤트가 상위의 화면 요소 들로 전달되는 특성
+	</p>
+	<form onfocusin="this.style.backgroundColor='pink';" 
+		  onfocusout="this.style.backgroundColor='skyblue';">
+		<h2>이벤트 처리 focusin, focusout</h2>
+		<input type="text" />
+	</form>
+	<br/>
+	<form onfocus="this.style.backgroundColor='pink';" 
+		  onblur="this.style.backgroundColor='skyblue';">
+		<h2>이벤트 처리 focus, blur</h2>
+		<input type="text" />
+	</form>
+	<hr/>
+	<h2>error</h2>
+	<img src="../img/banana.png" alt="바나나 이미지입니다."/>
+	<hr/>
+	<img onerror="this.src='../img/banana.png';" 
+		 src="https://naver.com/banana.png" 
+		 alt="바나나 이미지 입니다."/>
+	<br/> 
+	<!-- onerror="this.src='../../img/banana.png';" -->
+	<img onerror="this.src='../../img/banana.png';" 
+		 src="https://naver.com/banana.png" 
+		 alt="바나나 이미지 입니다."/>
+</body>
+</html>

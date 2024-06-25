@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>default event</title>
+<script>
+	function query(){
+		// alert('a tag click!!!!!');
+		let answer = confirm("네이버로 이동하시겠습니까?");
+		return answer;
+	}
+	
+	function noAction(e){
+		// event 객체에 저장된 기본 이벤트를 무시한다.
+		e.preventDefault();
+	}
+</script>
+</head>
+<body>
+	<!-- query(); 에서 반환된 boolean 값으로 event 실행 여부 판단 -->
+	<a href="https://naver.com" onclick="return query();" >네이버로 이동하기</a>
+	<br/>
+	<a href="javascript:alert('안가지롱');">이동할 페이지 하이퍼링크 처리를 자바스크립트로...</a>
+	<br/>
+	<!-- 
+		click event 발생 시 noAction 함수 호출 하면서 발생한 이벤트 정보를 저장하고 있는
+		event 객체를 매개변수로 전달
+	 -->
+	<a href="https://naver.com" onclick="noAction(event);">안간다!</a>
+	<hr/>
+	<form name="myForm" action="12_dom_mouse.html" target="_blank">
+		<label>
+			<input type="checkbox" name="eat" value="bread"/> 빵
+		</label>
+		
+		<input type="checkbox" name="eat" id="alcohol" onclick="noAction(event);" value="alcohol"/> 
+		<label for="alcohol">술</label>
+		
+		<input type="submit" value="실행"/>
+		<input type="button" value="일반버튼" id="btn"/>
+	</form>	
+	
+	
+	<script>
+		// 문서객체에 저장된 form 객체 중에 name 속성이 myForm인 요소
+		document.myForm.onsubmit = function(event){
+			// submit event 발생 시 호출
+			// return false;
+			event.preventDefault();
+			
+			// 지정된 태그요소에 click event 강제 발생
+			document.querySelector("#alcohol").click();
+			
+			document.querySelector("input[value='bread']").click();
+		};
+		
+		
+		let btn = document.getElementById("btn");
+		btn.onclick = function(){
+			// myForm form 태그의 submit 이벤트 실행
+			document.myForm.submit();	
+		};
+	</script>
+</body>
+</html>

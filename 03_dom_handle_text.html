@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>handle text content</title>
+</head>
+<body>
+	<div id="ex">
+		<b>여기는 div로 선언되었습니다.</b>
+		<script>
+			let a = 10;
+		</script>
+	</div>
+	<input type="text" name="exName" id="exName"/>
+	<br/>
+	<a href="#" onclick="get();">div 요소 내용 출력</a>
+	<br/>
+	<a href="#" onclick="set();">div 요소 내용 변경</a>
+	<script>
+		// div#ex 요소의 내부 컨텐츠 정보 읽기
+		function get() {
+			let ex = document.getElementById("ex");
+			console.log(ex);
+			console.log("-----------------------");
+			console.log("브라우저가 해석할 수 있는 전체 컨텐츠");
+			console.log(ex.innerHTML);
+			console.log("-----------------------");
+			console.log("사용자에게 출력되는 텍스트 컨텐츠");
+			console.log(ex.innerTEXT);
+			console.log("-----------------------");
+			console.log("태그 내부에 존재하는 모든 텍스트");
+			console.log(ex.textContent);
+		}
+		
+		// exName 입력필드에 작성된 내용으로
+		// #ex div 태그요소의 컨텐츠를 변경
+		function set() {
+			let ex = document.getElementById("ex");
+			console.log(ex);
+			console.log(exName);
+			
+			// ex.innerHTML = exName.value;
+			// ex.innerText = exName.value;
+			// 문서가 화면에 모두출력되고 나서 호출 시 화면을 새로그림.
+			document.write(exName.value);
+		}
+		
+	</script>
+	<h1>handle Style</h1>
+	<p id="p1">this is paragraph</p>
+	<button onclick="changeStyle();">눌러보세용</button>
+	
+	<script>
+		console.log(document.head);
+		console.log(document.body);
+		
+		function changeStyle() {
+			let p1 = document.getElementById("p1");
+			p1.style.color = "hotpink";
+			p1.style.fontStyle = "italic";
+			document.body.style.backgroundColor = "skyblue";
+			document.body.style.backgroundImage = "url(../img/poodle.png)"
+		}
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>js_dom/01_document.html</title>
+	<script>
+		let id = document.getElementById("selectedId");
+		console.log(id);
+	</script>
+</head>
+<body>
+	<h1>document tag selector</h1>
+	<h2>Document Object Model</h2>
+	
+	<hr/>
+	<input type="text" id="selectedId" class="tagClass" value="1" tabindex="1"/> <br/>
+	<input type="text" id="selectedId" class="tagClass" value="2" tabindex="2"/> <br/>
+	<input type="text" id="selectedId" class="tagClass" value="3" tabindex="3"/> <br/>
+	<input type="text" id="selectedId" class="tagClass" value="4" tabindex="4"/> <br/>
+	<input type="text" id="selectedId" class="tagClass" value="5" tabindex="5"/> <br/>
+	<input onclick="alert('김동화...');" type="button" id="selectedId" class="tagClass" value="button"/> <br/>
+	
+	<!-- 브라우저에 의해서 읽혀진 태그요소만 다큐멘트 문서객체에 등록 -->
+	<script>
+		// id 속성에 부여된 값으로 요소를 검색하여
+		// 제일 먼저 검색된 한개의 요소만 읽어옴.
+		id = document.getElementById("selectedId");
+		console.log(id);
+		id.value = "김동하...ㅂㅂ";
+				
+		// 문서에 출력
+		document.write("getElementById : "+id.value+"<br/>");
+		
+		/*
+			css 선택자와 동일하게 요소를 검색하여 가장 먼저 검색되는 한개의 요소를 읽어옴.
+			type or name : tag이름, class : . , id : #
+		*/
+		let selector = document.querySelector(".tagClass");
+		console.log(selector);
+		selector = document.querySelector("input");
+		console.log(selector);
+		selector = document.querySelector("#selectedId");
+		
+		document.write(`querySelector : ${selector.value} <br/>`);
+		
+		// 다중 요소 반환
+		// 태그 이름으로 선택된 모든 태그 요소를 배열 형식으로 반환
+		let tagArray = document.getElementsByTagName("input");
+		console.log(tagArray);
+		for(let i = 0; i < tagArray.length; i++){
+			document.write(`${i}번째 태그요소 : ${tagArray[i].value} <br/>`);
+		}
+		
+		// class 이름으로 선택된 모든 태그 요소를 배열 형식으로 반환
+		let classArray = document.getElementsByClassName("tagClass");
+		console.log(classArray);
+		
+		// css 선택자로 검색된 모든 태그 요소를 배열로 반환
+		let selectAll = document.querySelectorAll("input[type='text']");
+		console.log(selectAll);
+		
+		let tag = document.getElementById("selectedId");
+		// 함수를 => 화살표로 표시
+		// arrow function
+		tag.onclick = ()=>{
+			alert(this.value+"");
+		};
+	</script>
+	<hr/>
+	<a href="02_calc.html">02_calc.html</a>
+</body>
+</html>

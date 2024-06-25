@@ -1,0 +1,62 @@
+<!-- js_dom/05_dom_node_find.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>find node</title>
+</head>
+<body>
+	<header>
+		<nav id="grandParents">
+			<ul id="parents"><li id="one">첫째</li><li id="two">둘째</li><li id="three">셋째</li></ul>
+		</nav>
+	</header>
+	
+	<script>
+		// 자식 요소 찾기
+		// 기준 요소 : 아이디 속성값이 parents 인 태그 요소 노드
+		let parents = document.getElementById("parents");
+		
+		// parents 요소노드의 모든 자식 노드 
+		let every = parents.childNodes;
+		console.log(every);
+		
+		// 부모 요소 
+		let one = document.getElementById("one");
+		
+		parent = one.parentNode;
+		console.log(parent);
+		
+		let grandParents = parent.parentNode;
+		console.log(grandParents);
+		
+		grandParents = one.parentNode.parentNode;
+		console.log(grandParents);
+		
+		// 형제 요소 찾기
+		// 기준 요소 : 아이디 속성 값이 two 인 li 태그요소
+		let two = document.getElementById("two");
+		
+		// 다음 형제 요소
+		let next = two.nextSibling;
+		console.log(next);
+		
+		// 이전 형제 요소
+		let prev = two.previousSibling;
+		console.log(prev);
+		
+		
+		// 첫번째 자식 요소
+		one = parents.firstChild;
+		console.log(one);
+		
+		two = one.nextSibling;
+		console.log(two);
+		
+		// parents 태그 요소의 마지막 자식 요소
+		let last = parents.lastChild;
+		console.log(last);
+		
+	</script>
+</body>
+</html>

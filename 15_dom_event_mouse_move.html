@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mouse mode & mouse event</title>
+<script>
+	// 브라우저에 모든 문서가 출력 완료 되고
+	// 사용자와 상호작용(사용)할 준비가 완료 되었을 때 발생되는 이벤트
+	window.onload = function(){
+		
+		console.log("window.onload");
+		window.document.querySelector("div").onmousemove = function(event){
+			let x = event.pageX; // 전체 페이지 에서 x좌표
+			let y = event.pageY; // 전체 페이지 에서 y좌표
+			
+			// event 발생한태그 요소 기준 좌표
+			let offsetX = event.offsetX;
+			let offsetY = event.offsetY;
+			
+			let position = `x : ${x} , y : ${y} , offset x : ${offsetX}, offset y : ${offsetY}`;
+			document.querySelector("#pTag").innerHTML = position;
+		};
+		
+	};
+	
+</script>
+
+</head>
+<body>
+	<p id="pTag"></p>
+	<div style="background-color:yellow;width:300px;height:100px;"></div>
+	<script>
+		console.log("문서 출력 완료");
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>js_dom/02_calc.html
+	</title>
+</head>
+<body>
+	<input type="number" id="first" autofocus tabindex="1"/> +
+	<input type="number" id="second" tabindex="2"/>
+	<input type="text" id="result" readonly /> <br/>
+	<input type="button" value="결과확인" tabindex="3" onclick="calculateSum()"/>
+	
+	<script>
+	
+		/*
+			button이 클릭되었을 때
+			first tag 요소의 value값과
+			second tag 요소의 value값을 더한 결과를
+			result 태그요소의 value에 출력
+		*/
+		
+		let btn = document.querySelector("input[type=button]");
+		btn.onclick = function(){
+			// alert("click!!!");
+			let first = document.getElementById("first");
+			let second = document.getElementById("second");
+			
+			let result = parseInt(first.value) + parseInt(second.value);	// 숫자타입으로 변경 후 연산
+			
+			document.getElementById("result").value = result;
+		};
+		
+		let a = prompt("숫자입력");
+		console.log(a);
+		let bool = confirm("쉬시겠습니까?");
+		console.log(bool);
+		
+		/*
+		function calculateSum() {
+			// 첫번째와 두번째 요소 가져오기
+			var firstValue = document.getElementById('first').value;
+			var secondValue = document.getElementById('second').value;
+			
+			// 숫자로 반환
+			let firstNumber = parseFloat(firstValue);
+			let secondNumber = parseFloat(secondValue);
+			
+			// 더한 결과 계산
+			let sum = firstNumber + secondNumber;
+			
+			// 결과를 result 요소에 출력
+			document.getElementById('result').value = sum;
+		}
+		*/
+	</script>
+</body>
+</html>
