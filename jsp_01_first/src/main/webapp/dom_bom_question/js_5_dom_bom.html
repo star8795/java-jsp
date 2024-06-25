@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>타이머 및 리디렉션</title>
+</head>
+<body>
+    <button id="startTimerButton">Start Timer, Move Naver</button>
+    <p id="timerDisplay">5</p>
+
+    <script>
+    document.getElementById('startTimerButton').addEventListener('click', function(){
+        if (confirm("네이버로 이동하시겠습니까?\n확인하시면 5초 뒤 이동합니다.")) {
+            let timerDisplay = document.getElementById('timerDisplay'); // 'timerDisplay'로 수정
+            let timeLeft = 5;
+
+            let countdown = setInterval(function() {
+                timerDisplay.textContent = timeLeft;
+                timeLeft--;
+
+                if (timeLeft < 0) {
+                    clearInterval(countdown);
+                    window.location.href = "https://www.naver.com";
+                }
+            }, 1000);
+        } else {
+            alert("취소되었습니다.");
+        }
+    });
+    </script>
+</body>
+</html>

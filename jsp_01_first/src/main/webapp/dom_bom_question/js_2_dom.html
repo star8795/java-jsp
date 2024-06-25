@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>초급 문제</title>
+</head>
+<body>
+    <p>Counter: <span id="counter">0</span></p>
+    <button id="increaseButton">Increase</button>
+    <button id="decreaseButton">Decrease</button>
+
+    <script>
+       let counterValue = 0;
+       
+       function updateCounter() {
+		document.getElementById('counter').innerText = counterValue;
+	}
+       
+       document.getElementById('increaseButton').addEventListener('click',function(){counterValue++; updateCounter();});
+       document.getElementById('decreaseButton').addEventListener('click',function(){counterValue--; updateCounter();});
+    </script>
+</body>
+</html>

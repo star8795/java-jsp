@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM interval clearInterval</title>
+<script>
+
+	// interval을 저장할 변수
+	let interval;
+
+	/*
+		지정된 시간을 간격으로 함수를 반복적으로 수행
+		window.setInterval(실행할 함수, 시간간격);
+	*/
+	function changeColor(){
+		interval = window.setInterval(function(){
+			
+			let elem = document.querySelector("#target");
+			let c = elem.style.color; // style에 부여된 color 속성 값 
+			console.log(c);
+			
+			elem.style.color = (c == "red") ? "blue" : "red";
+			
+		} ,500);
+	} // end changeColor
+	
+	// 동작 중인 interval 제거
+	function stopText(){
+		window.clearInterval(interval);
+	}
+</script>
+</head>
+<body onload="changeColor();">
+	<div id="target">
+		<p>this is paragraph</p>
+	</div>
+	<button onclick="stopText();">stop</button>
+</body>
+</html>

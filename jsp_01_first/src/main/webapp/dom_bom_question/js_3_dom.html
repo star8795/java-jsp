@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>초급 문제</title>
+    <style>
+        #textContainer{
+            border:1px solid black;
+            min-height:30px;
+        }        
+    </style>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Enter some text">
+    <button id="addTextButton">Add Text</button> 
+    <br/>
+    <br/>
+    <div id="textContainer"></div>
+
+    <script>
+ 		document.getElementById('addTextButton').addEventListener('click',function(){
+ 			const textInput = document.getElementById('textInput');
+ 			const text = textInput.value;
+ 			
+ 			if(text.trim() !== ""){
+ 				const p = document.createElement('p');
+ 				p.textContent = text;
+ 				
+ 				document.getElementById('textContainer').appendChild(p);
+ 				
+ 				textInput.value = '';
+ 				textInput.focus();
+ 			}
+ 		});
+    </script>
+</body>
+</html>

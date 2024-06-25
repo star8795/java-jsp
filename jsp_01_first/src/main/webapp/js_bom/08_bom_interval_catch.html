@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>interval catch</title>
+	<style>
+		#box {
+			position: absolute;
+			width: 70px;
+			height: 70px;
+			top: 50%;
+			left: 50%;
+			background-color: darksalmon;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box" onclick="catchBox(this);">잡아랏!</div>
+
+	<script>
+		let x = 0, y = 0;
+
+		let interval = setInterval(function () {
+			// 0.5초에 한번 씩 box의 위치를 변경 
+			let box = document.querySelector("#box");
+
+			let top = screen.availHeight;
+			let left = screen.availWidth;
+			/*
+			x += 10;
+			y += 10;
+			*/
+
+			x = parseInt(Math.random() * left);
+			y = parseInt(Math.random() * top);
+
+			box.style.top = y + "px";
+			box.style.left = x + "px";
+
+		}, 2000);
+
+		// div#box 가 클릭 되었을 때 호출
+		function catchBox(box) {
+
+			box.innerHTML = "잡았다 요놈";
+			box.style.backgroundColor = "red";
+			clearInterval(interval);
+
+		}
+	</script>
+</body>
+
+</html>
