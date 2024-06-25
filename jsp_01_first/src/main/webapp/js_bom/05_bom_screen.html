@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BOM screen Scroll</title>
+	<script>
+		window.onload = function() {
+			// window.screen
+			let widthWin = screen.availWidth;
+			let heightWin = screen.availHeight;
+			console.log("사용가능한 화면 너비 : ", widthWin);
+			console.log("사용가능한 화면 높이 : ", heightWin);
+			
+			let width = screen.width;
+			let height = screen.height;
+			console.log("화면 너비",width);
+			console.log("화면 높이",height);
+			
+			// 문서의 너비와 높이
+			width = document.body.clientWidth;
+			height = document.body.clientHeight;
+			console.log("문서의 너비", width);
+			console.log("문서의 높이", height);
+		};
+		
+		// 스크롤이 변경되었을 때 발생되는 이벤트
+		window.onscroll = function() {
+			// 윈도우의 현재 y 스크롤 좌표
+			let wy = window.scrollY;
+			console.log("y scroll 좌표", wy);
+			
+			let dh = document.body.clientHeight;
+			console.log("문서의 전체 높이 : " + dh);
+			
+			let wh = window.screen.availHeight;
+			console.log("사용가능한 화면 높이 : "+ wh);
+			
+			if((wy + wh) > dh){
+				console.log("컨텐츠 소비 완료");
+				let elem = document.createElement("div");
+				elem.style.height = "500px";
+				elem.style.border = "1px solid black";
+				elem.innerHTML = "<h1> 추가 </h1>";
+				document.body.appendChild(elem);
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<div style="min-height: 1600px;width: 100%;border: 1px solid red;"></div>
+</body>
+</html>

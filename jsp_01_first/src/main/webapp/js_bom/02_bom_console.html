@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	// 출력 탭
+	window.console.log("기본");
+	
+	let a = "hello";
+	let b = 3.141592;
+	let c = false;
+	
+	console.log(a + b + c);
+	console.log(a , b , c);
+	
+	// pattern
+	console.log("%s는 문자열, %d는 수치형", a , b);
+	console.log("%s는 문자열, %f는 실수", a , b);
+	console.info("정보는 log랑 동일하게 출력");
+	console.warn("경고!!!!!");
+	console.error("오류!!!!!!!!");
+	
+	// console 출력된 내용을 청소
+	console.clear();
+	
+	// 디버깅 시에 연산에 소비된 시간을 체크하는 함수
+	console.time("타이머 1"); // 타이머 이름 지정
+	console.time("타이머 2");
+	// 생성 시간 부터 시간 측정
+	let sum = 0;
+	for(let i = 0; i <= 100000; i++){
+		if(i % 2 == 0){
+			sum += i;
+		}
+	} // end for
+	console.log(sum);
+	console.timeEnd("타이머 1");
+	for(let i = 0; i <= 100000; i++){}
+	console.timeEnd("타이머 2");
+	
+	// 객체 배열을 테이블 형식으로 출력하는 함수
+	const users = [
+		{name : 'Choi', age : 25, city : "New York"},
+		{name : 'Kim', age : 35, city : "한양"},
+		{name : 'Lee', age : 55, city : "개성"}
+	];
+	
+	console.log(users);
+	console.table(users);
+	console.table(users, ['name','city']);
+	
+</script>
+</head>
+<body>
+	<a href="03_bom_location.html">location</a>
+</body>
+</html>

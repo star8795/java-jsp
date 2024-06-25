@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM location</title>
+</head>
+<body>
+	<script>
+		/*  
+			location - 주소표시줄 URL을 조작 하는 객체
+		*/
+		console.log(window.location.href);
+		console.log(location.hostname);
+		console.log(location.pathname);
+		console.log(location.port);
+		console.log(location.protocol);
+		console.log(location.search);  // query string
+		console.log(location.toString());
+	</script>
+	
+	<button onclick="location.href = 'https://www.naver.com';">네이버 이동 href</button> <br/>
+	<!-- 
+		href 속성을 변경해서 페이지 이동  -> 기록에 저장
+		replace 에 매개변수로 전달된 페이지로 이동 - > 기록에 저장하지 않음
+	 -->
+	<button onclick="location.replace('https://www.naver.com');">네이버 이동 replace</button>
+	<br/>
+	<hr/>
+	<button id="next">history 이동</button>
+	<script>
+		document.getElementById("next").onclick = function() {
+			// 내부 페이지로 이동
+			location.href = "04_bom_history.html";
+		}
+	</script>
+</body>
+</html>

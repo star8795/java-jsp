@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>setTimeout(); clearTimeout();</title>
+</head>
+<body>
+	<!-- setTimeout : 지정된 시간만큼 지연 후 기능 수행 -->
+	<button onclick="showAlert();">눌러보세요!</button>
+	<br/>
+	<hr/>
+	<!-- 버튼을 클릭하면 div#clock 태그요소에 시간을 출력 -->
+	<div id="clock"></div>
+	<button onclick="setClock();">START!</button>
+	<button onclick="stop();">STOP!</button>
+	
+	<script>
+		function showAlert(){
+			// window.setTimeout(지연 후 실행될 함수, 지연시간 ms);
+			window.setTimeout(function(){ 
+				alert('timeout을 이용하여 표시 됩니다.');
+			}, 3000);
+		}
+		
+		// timeout을 저장할 변수
+		let timeout;
+		
+		function setClock(){
+			// 호출 되는 시점에 시간 정보를 저장하는 객체
+			let now = new Date();
+			let hours = now.getHours();		// 시간
+			let minutes = now.getMinutes();	// 분
+			let seconds = now.getSeconds();	// 초
+			
+			let time = hours+":"+minutes+":"+seconds;
+			document.getElementById("clock").innerHTML = time;
+			// window.setTimeout 
+			// 함수 내부에서 실행될 함수 자신을 호출 - 재귀함수
+			timeout = setTimeout(setClock, 1000);
+		}
+		
+		// 마지막에 호출되어서 타임아웃에 저장된 셋타임아웃 제거
+		function stop() {
+			window.clearTimeout(timeout);
+		}
+		
+	</script>
+</body>
+</html>
