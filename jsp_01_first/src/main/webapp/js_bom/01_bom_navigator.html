@@ -8,35 +8,35 @@
 	<script>
 		console.log(navigator);
 		console.log(window.navigator);
-		
-		for(let key in navigator){
-			
+
+		for ( let key in navigator) {
+
 			let value = navigator[key];
-			let str = key + ":"+value;
+			let str = key + ":" + value;
 			document.write(str + "<br/>");
-			
+
 		} // end for
-		
+
 		// 사용 언어
 		let userLang = navigator.language;
 		console.log(userLang);
-		
+
 		// 사용 브라우저 정보
 		function isMobile() {
 			let user = navigator.userAgent.toLowerCase();
-			if(user.indexOf('android') > -1 || user.indexOf('iphone') > -1 || user.indexOf('ipad') > -1 || user.indexOf('ipod') > -1){
+			if (user.indexOf('android') > -1 || user.indexOf('iphone') > -1
+					|| user.indexOf('ipad') > -1 || user.indexOf('ipod') > -1) {
 				return true;
 			}
 			return false;
-		}	// end function
-		
+		} // end function
+
 		let is_mobile = isMobile();
-		if(is_mobile){
+		if (is_mobile) {
 			alert('모바일 기기로 접속하셨습니다.')
-		}else{
+		} else {
 			alert('PC로 접속하셨습니다.')
 		}
-		
 	</script>
 </body>
 </html>

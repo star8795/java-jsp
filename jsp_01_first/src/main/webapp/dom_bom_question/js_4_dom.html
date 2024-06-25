@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>고급 문제</title>
-    <style>
-        #imageGallery {
-            border: 1px solid red;
-            min-height: 40px;
-        }
+<meta charset="UTF-8">
+<title>고급 문제</title>
+<style>
+#imageGallery {
+	border: 1px solid red;
+	min-height: 40px;
+}
 
-        #imageGallery img {
-            width: 100px;
-            height: 200px;
-            margin: 5px;
-            object-fit: cover;
-            /*
+#imageGallery img {
+	width: 100px;
+	height: 200px;
+	margin: 5px;
+	object-fit: cover;
+	/*
                 object-fit
                 fill    기본값. 주어진 너비와 높이에 딱 맞도록 사이즈를 조절합니다. 이미지의 가로세로 비율은 유지되지 않음
                 contain 가로세로 비율을 유지한 채로 사이즈가 조절되지만, 이미지와 컨테이너 간의 비율이 맞지 않는 경우엔 자리가 남음
@@ -22,35 +22,41 @@
                 none    아무것도 하지 않고 본래의 이미지 사이즈를 유지합니다. 이미지 가운데가 보여짐
                 scale-down  none 또는 contain 중에 더 적절한 방향으로 이미지 사이즈를 조절
             */
-        }
-    </style>
+}
+</style>
 </head>
 <body>
-    <input type="text" id="imageInput" placeholder="Enter image URL">
-    <button id="addImageButton">Add Image</button>
-    <br/>
-    <br/>
-    <div id="imageGallery"></div>
+	<input type="text" id="imageInput" placeholder="Enter image URL">
+	<button id="addImageButton">Add Image</button>
+	<br />
+	<br />
+	<div id="imageGallery"></div>
 
-    <script>
-        document.getElementById('addImageButton').addEventListener('click', function() {
-           
-            const imageUrl = document.getElementById('imageInput').value;
-            
-            if (imageUrl) {
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                
-                img.addEventListener('click', function() {
-                    img.remove();
-                });
-                
-                document.getElementById('imageGallery').appendChild(img);
-                
-                document.getElementById('imageInput').value = '';
-            }
-        });
-    </script>
+	<script>
+		document
+				.getElementById('addImageButton')
+				.addEventListener(
+						'click',
+						function() {
+
+							const imageUrl = document
+									.getElementById('imageInput').value;
+
+							if (imageUrl) {
+								const img = document.createElement('img');
+								img.src = imageUrl;
+
+								img.addEventListener('click', function() {
+									img.remove();
+								});
+
+								document.getElementById('imageGallery')
+										.appendChild(img);
+
+								document.getElementById('imageInput').value = '';
+							}
+						});
+	</script>
 </body>
 </html>
 
