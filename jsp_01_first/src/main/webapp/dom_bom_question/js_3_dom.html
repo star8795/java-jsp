@@ -18,6 +18,8 @@
 	<div id="textContainer"></div>
 
 	<script>
+	/*
+	나의 답안
 		document.getElementById('addTextButton')
 				.addEventListener(
 						'click',
@@ -37,6 +39,29 @@
 								textInput.focus();
 							}
 						});
+	*/
+	
+	// 모범 답안
+		
+		document.getElementById("addTextButton").onclick = function() {
+			let textInput = document.querySelector("#textInput");
+			let text = textInput.value;
+			if (text.length == 0) {
+				alert("작성된 내용이 없습니다.");
+				textInput.focus();
+				return false;
+			}
+
+			// 작성된 내용이 존재
+			let newParagraph = document.createElement("p");
+			newParagraph.innerText = text;
+
+			let container = document.getElementById("textContainer");
+			// 태그 요소에 내부 요소 추가 - appendChild, append
+			container.append(newParagraph);
+			textInput.value = "";
+			textInput.focus();
+		};
 	</script>
 </body>
 </html>

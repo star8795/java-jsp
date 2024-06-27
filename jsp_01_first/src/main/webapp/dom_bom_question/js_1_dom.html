@@ -9,9 +9,20 @@
 	<button id="btn">텍스트 변경</button>
 
 	<script>
+	/*
+	나의 답안
 		document.getElementById('btn').addEventListener('click', function() {
 			document.getElementById('title').innerText = 'Hello, World!';
 		});
+	*/
+	
+	// 모범답안
+		document.querySelector('#btn').onclick = function() {
+		// tag요소.innerHTML, innerText, textContent
+			let text = '<span style="color:red;">Hello, World</span>'
+			let title = document.getElementById("title");
+			title.innerHTML = text;
+		}
 	</script>
 </body>
 </html>

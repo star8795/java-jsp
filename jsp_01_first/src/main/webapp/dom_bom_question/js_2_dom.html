@@ -12,22 +12,42 @@
 	<button id="decreaseButton">Decrease</button>
 
 	<script>
-		let counterValue = 0;
+		/*
+		나의 답안
+			let counterValue = 0;
 
-		function updateCounter() {
-			document.getElementById('counter').innerText = counterValue;
-		}
+			function updateCounter() {
+				document.getElementById('counter').innerText = counterValue;
+			}
 
-		document.getElementById('increaseButton').addEventListener('click',
-				function() {
-					counterValue++;
-					updateCounter();
-				});
-		document.getElementById('decreaseButton').addEventListener('click',
-				function() {
-					counterValue--;
-					updateCounter();
-				});
+			document.getElementById('increaseButton').addEventListener('click',
+					function() {
+						counterValue++;
+						updateCounter();
+					});
+			document.getElementById('decreaseButton').addEventListener('click',
+					function() {
+						counterValue--;
+						updateCounter();
+					});
+		 */
+
+		// 모범 답안
+		// span 태그 내부에 출력될 카운터 숫자를 저장할 변수
+		
+		let count = 0;
+
+		let counter = document.getElementById("counter");
+
+		document.getElementById("increaseButton").onclick = function() {
+			count++;
+			counter.innerText = count;
+		};
+
+		document.getElementById("decreaseButton").onclick = function() {
+			count--;
+			counter.innerText = count;
+		};
 	</script>
 </body>
 </html>
