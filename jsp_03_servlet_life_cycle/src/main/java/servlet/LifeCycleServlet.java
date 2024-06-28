@@ -17,9 +17,9 @@ public class LifeCycleServlet extends HttpServlet {
 
 		System.out.println("LifeCycleServlet 생성");
 		/*
-		Class<LifeCycleServlet> servlet = Class.forName("servlet.LifeCycleServlet");
-		LifeCycleServlet clazz = servlet.newInstance();
-		*/
+		 * Class<LifeCycleServlet> servlet = Class.forName("servlet.LifeCycleServlet");
+		 * LifeCycleServlet clazz = servlet.newInstance();
+		 */
 	}
 
 	// Servlet Class의 인스턴스가 생성되고 요청 처리할 준비가 완료되면 최초에 한번 호출되는 메소드
@@ -36,15 +36,16 @@ public class LifeCycleServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("LifeCycleServlet service 호출");
 		// super.service(request, response);
 		// 요청 전송 방식 - GET, POST
 		String method = request.getMethod();
 		System.out.println("요청 전송 방식 : " + method);
-		if(method.equalsIgnoreCase("GET")) {
+		if (method.equalsIgnoreCase("GET")) {
 			doGet(request, response);
-		}else {
+		} else {
 			doPost(request, response);
 		}
 	}

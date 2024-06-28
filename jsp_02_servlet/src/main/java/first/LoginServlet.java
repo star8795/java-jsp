@@ -18,11 +18,11 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("doGet 요청 처리!");
 		String uid = req.getParameter("uid");
 		String upw = req.getParameter("upw");
-		
+
 		PrintWriter out = resp.getWriter();
-		out.println("<h1>uid : " + uid +"<h1>");
-		out.println("<h1>upw : " + upw +"<h1>");
-		
+		out.println("<h1>uid : " + uid + "<h1>");
+		out.println("<h1>upw : " + upw + "<h1>");
+
 	} // end doGET
 
 	@Override
