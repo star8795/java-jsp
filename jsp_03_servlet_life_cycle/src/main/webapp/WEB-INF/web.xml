@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
-  <display-name>jsp_03_servlet_life_cycle</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
-  
-  <!-- LifeCycleServlet 등록 -->
-  <servlet>
-  	<servlet-name>lifeCycleServlet</servlet-name>
-  	<servlet-class>servlet.LifeCycleServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>lifeCycleServlet</servlet-name>
-  	<url-pattern>/lifeCycle</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>jsp_03_servlet_life_cycle</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>lifeCycleServlet</servlet-name>
+		<servlet-class>servlet.LifeCycleServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lifeCycleServlet</servlet-name>
+		<url-pattern>/lifeCycle</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MemberRegisterServlet</servlet-name>
+		<servlet-class>servlet.MemberRegisterServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberRegisterServlet</servlet-name>
+		<url-pattern>/memReg</url-pattern>
+		<url-pattern>/memberReg</url-pattern>
+	</servlet-mapping>
 </web-app>
