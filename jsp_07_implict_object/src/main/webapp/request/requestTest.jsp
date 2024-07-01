@@ -18,7 +18,7 @@
 		
 		encType="multipart/form-data"
 		전달되는 데이터에 이진 데이터가 포함되어 있으므로 모든 문자를 인코딩 하지 않음을 명시
-		이 방식은 문자가 아닌 데이터 등을 서버에 전송할 때 사용.(파일 업로드)
+		이 방식은 문자가 아닌 데이터 등을 서버에 전송할 때 사용.(파일 업로드ㄴ)
 	-->
 	<form enctype="application/x-www-form-urlencoded"
 		action="requestResult.jsp" method="post">
