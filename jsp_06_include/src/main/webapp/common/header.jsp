@@ -9,3 +9,7 @@
 	<h1>HEADER JSP</h1>
 	<a href="index.jsp">메인으로</a> | <a href="second.jsp">SECOND</a> 
 	<hr/>
+<!-- 선언문 -->
+<%!
+	String s = "Header에서 선언된 전역변수 - Field";
+%>
