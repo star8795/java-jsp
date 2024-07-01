@@ -18,10 +18,18 @@
 	<h3>
 		<a href="attrForm.jsp">속성-영역 객체 테스트</a>
 	</h3>
-	
-	<h4>pageContext id : <%= pageContext.getAttribute("pageId") %></h4>
-	<h4>request email : <%= request.getAttribute("requestEmail") %></h4>
-	<h4>session email : <%= session.getAttribute("sessionEmail") %></h4>
-	<h4>application id : <%= application.getAttribute("appId") %></h4>
+
+	<h4>
+		pageContext id :
+		<%=pageContext.getAttribute("pageId")%></h4>
+	<h4>
+		request email :
+		<%=request.getAttribute("requestEmail")%></h4>
+	<h4>
+		session email :
+		<%=session.getAttribute("sessionEmail")%></h4>
+	<h4>
+		application id :
+		<%=application.getAttribute("appId")%></h4>
 </body>
 </html>

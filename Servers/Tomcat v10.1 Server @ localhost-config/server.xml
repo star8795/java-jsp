@@ -143,7 +143,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	  
-      <Context docBase="jsp_07_implict_object" path="/jsp_07_implict_object" reloadable="true" source="org.eclipse.jst.jee.server:jsp_07_implict_object"/></Host>
+      <Context docBase="jsp_08_session_cookie" path="/jsp_08_session_cookie" reloadable="true" source="org.eclipse.jst.jee.server:jsp_08_session_cookie"/></Host>
       
     </Engine>
   </Service>
