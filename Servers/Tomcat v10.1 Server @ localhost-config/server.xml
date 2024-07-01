@@ -143,7 +143,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	  
-      <Context docBase="jsp_05_page_directive_tag" path="/jsp_05_page_directive_tag" reloadable="true" source="org.eclipse.jst.jee.server:jsp_05_page_directive_tag"/></Host>
+      <Context docBase="jsp_06_include" path="/jsp_06_include" reloadable="true" source="org.eclipse.jst.jee.server:jsp_06_include"/></Host>
       
     </Engine>
   </Service>
