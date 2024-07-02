@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +7,12 @@
 </head>
 <body>
 	<h1>result.jsp</h1>
-	<h3>pageContext : <%= pageContext.getAttribute("index") %></h3>
-	<h3>request :  <%= request.getAttribute("index") %></h3>
+	<h3>
+		pageContext :
+		<%=pageContext.getAttribute("index")%></h3>
+	<h3>
+		request :
+		<%=request.getAttribute("index")%></h3>
 	<!-- 
 		jsp or servlet class 에서 java Code를 통해 페이지를 전환하는 방법
 		
@@ -22,14 +26,14 @@
 		(하나의 요청에 출력할 페이지만 변경)
 		request.getRequestDispatcher("출력할 페이지 경로").forward(request,response);
 	 -->
-	<hr/>
+	<hr />
 	<form action="redirect" method="POST">
-		<input type="text" name="id"/>
+		<input type="text" name="id" />
 		<button>POST</button>
 	</form>
-	<br/>
-	<hr/>
+	<br />
+	<hr />
 	<a href="forward?id=chlrlrms">forward</a>
-	
+
 </body>
 </html>
