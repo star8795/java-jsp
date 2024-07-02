@@ -143,7 +143,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	  
-      <Context docBase="jsp_08_session_cookie" path="/jsp_08_session_cookie" reloadable="true" source="org.eclipse.jst.jee.server:jsp_08_session_cookie"/></Host>
+      <Context docBase="jsp_09_redirect_forward" path="/jsp_09_redirect_forward" reloadable="true" source="org.eclipse.jst.jee.server:jsp_09_redirect_forward"/></Host>
       
     </Engine>
   </Service>
