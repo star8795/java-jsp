@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="common/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ include file="common/header.jsp"%>
 <!-- form[action='' method='POST']>table>(tr>th+(td>input[type='text']))*3 -->
 <form action="joinSubmit.jsp" method="POST">
 	<table border="1">
@@ -10,15 +10,15 @@
 		</tr>
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" name="uid" required/></td>
+			<td><input type="text" name="uid" required /></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="password" name="upw" required/></td>
+			<td><input type="password" name="upw" required /></td>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="uname" required/></td>
+			<td><input type="text" name="uname" required /></td>
 		</tr>
 		<tr>
 			<th colspan="2">
@@ -27,4 +27,4 @@
 		</tr>
 	</table>
 </form>
-<%@ include file="common/tail.jsp" %>
+<%@ include file="common/tail.jsp"%>

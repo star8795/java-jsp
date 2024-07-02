@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
-	session.removeAttribute("loginMember");
+session.removeAttribute("loginMember");
 %>
 <script>
 	alert("로그아웃 완료");
