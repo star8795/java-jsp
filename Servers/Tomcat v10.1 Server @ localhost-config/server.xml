@@ -143,7 +143,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 	  
-      <Context docBase="jsp_10_session_application" path="/jsp_10_session_application" reloadable="true" source="org.eclipse.jst.jee.server:jsp_10_session_application"/></Host>
+      <Context docBase="jsp_11_database_mysql" path="/jsp_11_database_mysql" reloadable="true" source="org.eclipse.jst.jee.server:jsp_11_database_mysql"/></Host>
       
     </Engine>
   </Service>
