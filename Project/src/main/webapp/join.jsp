@@ -15,7 +15,7 @@
             background-color: #f4f4f4;
             margin: 0;
         }
-        .signup-container {
+        .join {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
@@ -24,18 +24,18 @@
             width: 100%;
             border: 1px solid #ccc;
         }
-        .signup-container h2 {
+        .join h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-        .signup-container input {
+        .join input {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .signup-container button {
+        .join button {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
@@ -45,7 +45,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .signup-container button:hover {
+        .join button:hover {
             background-color: #0056b3;
         }
         .hidden {
@@ -91,14 +91,15 @@
     </script>
 </head>
 <body>
-    <div class="signup-container">
+    <div class="join">
         <h2>회원가입</h2>
-        <form action="login.jsp" method="post">
-            <input type="text" name="phone" placeholder="전화번호" required>
-            <button type="button">전화번호 인증</button>
-            <input type="text" name="name" placeholder="이름" required>
-            <input type="date" name="birthdate" placeholder="생년월일" required>
-            <input type="email" id="email" name="email" placeholder="이메일" required>
+        <form action="joinComplete.jsp" method="post">
+            이름 <input type="text" name="name" placeholder="이름" required><br/>
+            아이디 <input type="text" name="id" placeholder="id" required><br/>
+            비밀번호 <input type="password" name="pass" placeholder="password" required><br/>
+            생년월일 <input type="date" name="birthdate" placeholder="생년월일" required><br/>
+            전화번호 <input type="text" name="phone" placeholder="전화번호" required><br/>
+            이메일 <input type="email" id="email" name="email" placeholder="email" required><br/>
             <button type="button" onclick="sendEmail()">이메일 인증</button>
             <p id="emailMessage"></p>
             <div id="authCodeDiv" class="hidden">
