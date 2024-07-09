@@ -3,5 +3,9 @@
 	String enteredCode = request.getParameter("authCode");
 	String sessionCode = (String) session.getAttribute("authCode");
 	
-	
+	if(enteredCode.equals(sessionCode)){
+		out.print("success");
+	}else{
+		out.print("fail");
+	}
 %>
