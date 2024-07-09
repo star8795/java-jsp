@@ -47,7 +47,7 @@ public class EmailSender {
 
     private static String generateCode() {
         Random random = new Random();
-        int code = 100000 + random.nextInt(900000); // 100000부터 999999 사이의 난수 생성
+        int code = 100000 + random.nextInt(900000); 
         return String.valueOf(code);
     }
 }
