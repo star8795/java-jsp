@@ -14,4 +14,14 @@
     <servlet-name>SendEmailServlet</servlet-name>
     <url-pattern>/SendEmail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VerifyEmailServlet</display-name>
+    <servlet-name>VerifyEmailServlet</servlet-name>
+    <servlet-class>com.example.VerifyEmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyEmailServlet</servlet-name>
+    <url-pattern>/VerifyEmail</url-pattern>
+  </servlet-mapping>
 </web-app>
