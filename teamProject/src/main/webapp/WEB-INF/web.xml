@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>회원가입 웹 애플리케이션</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>SendEmailServlet</display-name>
-    <servlet-name>SendEmailServlet</servlet-name>
-    <servlet-class>com.example.SendEmailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SendEmailServlet</servlet-name>
-    <url-pattern>/SendEmail</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>VerifyEmailServlet</display-name>
-    <servlet-name>VerifyEmailServlet</servlet-name>
-    <servlet-class>com.example.VerifyEmailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>VerifyEmailServlet</servlet-name>
-    <url-pattern>/VerifyEmail</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>회원가입 웹 애플리케이션</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>SendEmailServlet</display-name>
+		<servlet-name>SendEmailServlet</servlet-name>
+		<servlet-class>com.example.SendEmailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendEmailServlet</servlet-name>
+		<url-pattern>/SendEmail</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>VerifyEmailServlet</display-name>
+		<servlet-name>VerifyEmailServlet</servlet-name>
+		<servlet-class>com.example.VerifyEmailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VerifyEmailServlet</servlet-name>
+		<url-pattern>/VerifyEmail</url-pattern>
+	</servlet-mapping>
 </web-app>

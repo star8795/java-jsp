@@ -40,6 +40,9 @@
 	</form>
 	<%@ page import="java.sql.*, utils.*" %>
 	<%
+		// 한 페이지에 보여줄 게시물 개수
+		int pageCount = 10;
+	
 		Connection conn = JDBCUtil.getConnection();
 		
 		String sql = "SELECT num, guestName, message FROM guestBook ORDER BY num DESC";

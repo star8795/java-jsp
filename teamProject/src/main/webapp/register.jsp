@@ -53,42 +53,42 @@
         }
     </style>
     <script>
-    function sendEmail() {
-        var email = document.getElementById("email").value;
-        if (email) {
+        function sendEmail() {
+            var email = document.getElementById("email").value;
+            if (email) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "sendEmail.jsp", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("authCodeDiv").classList.remove("hidden");
+                        document.getElementById("emailMessage").innerText = "인증 코드가 이메일로 전송되었습니다.";
+                    }
+                };
+                xhr.send("email=" + email);
+            } else {
+                alert("이메일을 입력하세요.");
+            }
+        }
+
+        function verifyCode() {
+            var authCode = document.getElementById("authCode").value;
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "sendEmail", true);
+            xhr.open("POST", "verifyEmail.jsp", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("authCodeDiv").classList.remove("hidden");
-                    document.getElementById("emailMessage").innerText = "인증 코드가 이메일로 전송되었습니다.";
+                    if (xhr.responseText.trim() === "success") {
+                        document.getElementById("verificationMessage").innerText = "이메일 인증 성공!";
+                        document.getElementById("registerBtn").disabled = false;
+                    } else {
+                        document.getElementById("verificationMessage").innerText = "인증 코드가 올바르지 않습니다.";
+                    }
                 }
             };
-            xhr.send("email=" + email);
-        } else {
-            alert("이메일을 입력하세요.");
+            xhr.send("authCode=" + authCode);
         }
-    }
-
-    function verifyCode() {
-        var authCode = document.getElementById("authCode").value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "verifyEmail", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                if (xhr.responseText.trim() === "success") {
-                    document.getElementById("verificationMessage").innerText = "이메일 인증 성공!";
-                    document.getElementById("registerBtn").disabled = false;
-                } else {
-                    document.getElementById("verificationMessage").innerText = "인증 코드가 올바르지 않습니다.";
-                }
-            }
-        };
-        xhr.send("authCode=" + authCode);
-    }
-</script>
+    </script>
 </head>
 <body>
     <div class="join">
