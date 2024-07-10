@@ -91,6 +91,8 @@
     </script>
 </head>
 <body>
+	<!-- <a href="sendEmail.jsp?email=hap0p9y@nate.com">aaaaa</a> -->
+
     <div class="join">
         <h2>회원가입</h2>
         <form action="joinComplete.jsp" method="post">

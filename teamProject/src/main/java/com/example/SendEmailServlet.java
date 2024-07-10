@@ -26,15 +26,15 @@ public class SendEmailServlet extends HttpServlet {
 		String crtfcNo = RandomStringUtils.randomNumeric(6);
 		
 		String host = "smtp.naver.com";
-		String senderEmail = "";	// 보내는 이의 메일 주소
-		String password = "";	// 보내는 이의 메일 비밀번호
+		String senderEmail = "star8795@naver.com";	// 보내는 이의 메일 주소
+		String password = "Kim168017**";	// 보내는 이의 메일 비밀번호
 		
 		Properties props = new Properties();
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", 587);
+		props.put("mail.smtp.host", "smtp.naver.com");
+		props.put("mail.smtp.port", 465);
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		props.put("mail.smtp.ssl.enable", "true");
+		props.put("mail.smtp.ssl.trust", "host");
 		
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

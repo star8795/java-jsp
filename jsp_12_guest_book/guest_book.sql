@@ -24,4 +24,9 @@ SELECT guestName,password,message FROM guestBook;
 
 SELECT num, guestName, message FROM guestBook ORDER BY num DESC;
 
-SELECT num, guestName, message FROM guestBook ORDER BY num DESC LIMIT 10;
+SELECT num, guestName, message FROM guestBook ORDER BY num DESC LIMIT 0, 10;
+
+SELECT num, guestName, message FROM guestBook ORDER BY num DESC LIMIT 10, 10;
+
+
+SELECT count(num) FROM guestBook;
