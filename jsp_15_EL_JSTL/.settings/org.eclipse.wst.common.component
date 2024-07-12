@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="teamProject">
+    <wb-module deploy-name="jsp_15_EL_JSTL">
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="teamProject"/>
-        <property name="java-output-path" value="/teamProject/build/classes"/>
+        <property name="context-root" value="jsp_15_EL_JSTL"/>
+        <property name="java-output-path" value="/jsp_15_EL_JSTL/build/classes"/>
     </wb-module>
 </project-modules>
