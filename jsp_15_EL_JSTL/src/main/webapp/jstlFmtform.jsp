@@ -14,6 +14,8 @@
 			<option value="ko_KR">한국어</option>
 			<option value="en_US">ENGLISH</option>
 		</select>
+		<br/>
+		<button>확인</button>
 	</form>
 </body>
 </html>
