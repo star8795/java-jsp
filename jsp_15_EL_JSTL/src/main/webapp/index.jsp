@@ -10,5 +10,6 @@
 	<a href = "elTestForm.jsp">EL TEST</a> <br/>
 	<a href = "jstlCore.jsp">JSTL core</a> <br/>
 	<a href = "jstlCoreControl.jsp">JSTL Control core</a>
+	<a href = "jstlFmtform.jsp">JSTL formatter</a>
 </body>
 </html>
