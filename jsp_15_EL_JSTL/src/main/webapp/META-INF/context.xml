@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- 등록된 자원 공유 -->
+	<Resource
+		name="java/testVO" 
+		type="test.TestVO" 
+		factory="org.apache.naming.factory.BeanFactory"
+		id="id001"
+		age="10"
+	/>
+	<Resource 
+		name="java/MySQLDB" 
+		type="javax.sql.DataSource" 
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/digital_jsp" 
+		username="digital" 
+		password="1234" 
+		initialSize="10"
+		maxActive="200"
+		maxWait="60000"
+		minIdle="10"/>
+		<!--
+			minIdle : 최소한으로 유지될 연결 객체의 수 - 기본값 0 
+			maxWait : 사용할 수 있는 커넥션 객체가 없을때 사용자의 대기 시간 설정(1/1000)
+			maxActive : 동시에 제공할 수 있는 최대 연결 개수
+			initialSize : dataSource 객체 생성 후 최초에 getConnection()이 호출 되었을때 
+			커넥션 풀에 생성 해둘 커넥션 객체 개수
+		-->
+</Context>
