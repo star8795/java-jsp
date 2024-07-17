@@ -1,0 +1,65 @@
+﻿<option value="" selected="selected">이메일을 선택하세요</option>
+<option value="paran.com" >paran.com</option>
+<option value="hanmail.net">hanmail.net</option>
+<option value="hitel.net">hitel.net</option>
+<option value="hanmir.com">hanmir.com</option>
+<option value="naver.com">naver.com</option>
+<option value="netian.com">netian.com</option>
+<option value="dreamwiz.com">dreamwiz.com</option>
+<option value="lycos.co.kr">lycos.co.kr</option>
+<option value="yahoo.co.kr">yahoo.co.kr</option>
+<option value="chollian.net">chollian.net</option>
+<option value="orgio.net">orgio.net</option>
+<option value="korea.com">korea.com</option>
+<option value="freechal.com">freechal.com</option>
+<option value="hotmail.com">hotmail.com</option>
+<option value="unitel.co.kr">unitel.co.kr</option>
+<option value="nate.com">nate.com</option>
+<option value="empal.com">empal.com</option>
+<option value="nownuri.net">nownuri.net</option>
+<option value="hanafos.com">hanafos.com</option>
+<option value="kornet.net">kornet.net</option>
+
+<option value="010">010</option>
+<option value="011">011</option>
+<option value="016">016</option>
+<option value="017">017</option>
+<option value="018">018</option>
+<option value="019">019</option>
+<option value="051">051</option>
+<option value="02">02</option>
+<option value="031">031</option>
+<option value="032">032</option>
+<option value="033">033</option>
+<option value="041">041</option>
+<option value="042">042</option>
+<option value="043">043</option>
+<option value="052">052</option>
+<option value="053">053</option>
+<option value="054">054</option>
+<option value="055">055</option>
+<option value="061">061</option>
+<option value="062">062</option>
+<option value="063">063</option>
+<option value="064">064</option>
+<option value="0502">0502</option>
+<option value="070">070</option>
+
+
+// 정규식 || 정규표현식(Regular Expression)  sample
+// 특정한 규칙을 가진 문자열의 집합을 표현하는데 사용하는 형식 언어
+// var regexTitle = /^[가-힣-zA-Z]{2,12}$/;									// 한글 영문 포함 2~12자 이내
+// var regexTitle = /^[\uac00-\ud7a3a-zA-Z]{2,12}$/;						// 한글 영문 포함 2~12자 이내 
+// var regexTitle = /^[\uac00-\ud7a3a-zA-Z\s0-9]{2,16}$/;					// 한글 영문 포함 2~16자 이내 
+// var regexTitle = /^[*]{2,20}$/;											// 모든글자 2~20자 이내 
+// var regexEmail =/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;       // 이메일
+// var regexID = /^[0-9a-zA-Z]{4,12}$/;										// ID 영문숫자 포함 4~12자 이내(특문제외)
+// var regexPhone = /^[0-9]{3,4}[0-9]{4}$/;									// mobile -표시 없이 숫자만
+// var regexMobile = /^[0-9]{2,3}?[0-9]{3,4}?[0-9]{4}$/;					// mobile -표시 없이 숫자만
+// var regexBirth = /^[0-9]{4}[0-9]{2}[0-9]{2}$/;							// 생년월일  19820607
+// var regexKey = /^[0-9]{5,6}$/;											// 인증번호	숫자 5~6
+// var regexPass = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;			// 영문,숫자를 혼합하여 6~20자 이내
+// var regexName = /^[\uac00-\ud7a3]{2,6}$/;								// 한글 영문 포함 2~6자 이내 
+// var regexDate = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;							// 날짜 -표시 없이 숫자만 ex)19830207
+// var regexDateTime = /^[0-9]{2}:[0-9]{2}~[0-9]{2}:[0-9]{2}$/;				// 시간  ex)19:08~20:08
+// var regexPass = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;	// 특수문자 포함 비밀번호

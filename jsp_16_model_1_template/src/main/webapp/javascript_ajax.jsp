@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>javascriptj AJAX</title>
+<title>javascriptj AJAXSS</title>
 </head>
 <body>
 	
