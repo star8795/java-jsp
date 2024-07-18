@@ -1,7 +1,11 @@
+
 INSERT INTO digital_member(u_id,u_pw,u_name,u_phone,u_birth) 
 VALUES('admin','admin','MASTER','01000000000','20240308');
 
-SELECT * FROM digital_member
+INSERT INTO digital_member(u_id,u_pw,u_name,u_phone,u_birth) 
+VALUES('hap0p9y@nate.com','12345','최기근','01094867166','20020308');
+
+SELECT * FROM digital_member;
 
 CREATE TABLE IF NOT EXISTS digital_member(
 	u_no INT PRIMARY KEY AUTO_INCREMENT,			-- 회원 번호

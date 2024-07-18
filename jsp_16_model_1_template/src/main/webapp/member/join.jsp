@@ -131,11 +131,20 @@
 </form>
 </section>
 <script>
-	var boolUid = false;	// u_id 검증 완료 여부를 저장할 변수
+	
+	var boolUid = false;		// u_id 검증 완료 여부를 저장할 변수
 	
 	// 이메일 정규 표현식
 	var regexEmail =/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;       // 이메일
-	document.querySelector("#u_id").onkeydown = function(){
+	// "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$";
+	
+	// 이메일 발송 버튼
+	let acceptEmail = document.querySelector("#acceptEmail"); 
+	// 이메일 코드 인증
+	let emailCodeWrap = document.querySelector("#emailCodeWrap");
+	
+	document.querySelector("#u_id").onkeyup = function(){
+		
 		let tempVal = this.value;
 		console.log(tempVal);
 		
@@ -145,16 +154,158 @@
 		if(regexEmail.test(tempVal)){
 			elP.innerHTML = "<span style='color:green'>올바른 이메일 형식입니다.</span>";
 			console.log("일치합니다.");
-			location.href="checkId.jsp?u_id="+tempVal;
+			// location.href="checkId.jsp?u_id="+tempVal;
+			checkUidAjax(this, elP, tempVal);
 		}else{
 			elP.innerHTML = "<span style='color:red'>사용할 수 없습니다.</span>";
 			console.log("일치하지 않습니다.");
+			// 이메일 형식이 아닐 경우에 이메일 인증 버튼 숨김
+			acceptEmail.style.display = "none";
 		}
 	};
+	
+	// checkUidAjax(u_id입력태그요소, 결과를 출력할 태그요소, 비교할 이메일 data)
+	function checkUidAjax(input, elP, val){
+		// AJAX 방식으로 서버에 ID 사용 가능 여부 요청
+		fetch("checkId.jsp?u_id="+val)
+		.then(response => response.json())
+		.then(result => {
+			console.log(result);
+			let message  = result ? "사용가능한 아이디입니다." : "사용할 수 없는 아이디입니다.";
+			showMessage(elP, message, result);
+			if(result){
+				// 사용가능한 아이디
+				acceptEmail.style.display = "inline-block";
+			}else{
+				// 사용할 수 없는 아이디		
+				acceptEmail.style.display = "none";
+			}
+		})
+		.catch(error => console.log(error));
+	} // end checkId
+	
+	// 검증 결과 출력 함수
+	// showMessage(메세지 출력할 요소,"출력할 메세지", 가능 여부)
+	function showMessage(elp,msg,isCheck){
+		let color = isCheck ? "color:green;" : "color:red";
+		let html = "<span style='font-size:12px;"+color+"'>";
+		html += msg;
+		html +="</span>";
+		elp.innerHTML = html;
+	}
+	
+	// 메일발송 이벤트 처리
+	let emailCode = ''; // 발송된 인증 코드 저장
+	
+	acceptEmail.onclick = function(){
+		// 메일 발송 요청 시 - 메일 발송 버튼 비활성 화
+		this.setAttribute("disabled","disabled");
+		
+		let u_id = document.querySelector("#u_id");
+		fetch("sendMail.jsp",{ 
+			method : "POST",
+			// 수신자 이메일 : 인증 받을 이메일 주소를 파라미터로 전달
+			body : new URLSearchParams({u_id : u_id.value})
+		})
+		.then(res => res.json())
+		.then(result => { 
+			console.log(result);
+			// 발신한 코드 정보 저장
+			emailCode = result;
+			// 메일 인증 코드 발송 완료
+			alert('이메일 인증 코드 발송 완료! 이메일을 확인해주세요!');
+			emailCodeWrap.style.display = "block";
+		})
+		.catch(error => console.log(error));
+	}
+	
+	// 인증코드 확인 버튼 이벤트 처리
+	document.querySelector("#emailAcceptBtn").onclick = function(){
+		let userCode = document.querySelector("#emailCode").value;
+		let message = "";
+		if(emailCode == userCode){
+			// 인증 코드 일치
+			alert("이메일 인증이 완료되었습니다.");
+			message = "이메일 인증 완료";
+			boolUid = true;
+			// 이메일 발송 버튼  disabled 속성 제거
+			acceptEmail.removeAttribute("disabled");
+			acceptEmail.style.display = "none";
+			emailCodeWrap.style.display = "none";
+		}else{
+			message = "인증 코드를 다시 확인해 주세요.";
+			boolUid = false;
+		}
+		
+		// 결과 메세지 출력
+		let elP = acceptEmail.parentNode.querySelector(".result");
+		showMessage(elP, message, boolUid);
+	}; // end 인증 코드 확인
+	
+	// 비밀번호 체크 
+	let boolPassword = false;
+	let u_pw = document.querySelector("#u_pw");
+	let re_pw = document.querySelector("#re_pw");
+	
+	// 특수문자 포함 비밀번호
+	var regexPass = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;	
+	
+	u_pw.onkeyup = function(){
+		let val = this.value;
+		let elP = this.nextElementSibling;
+		let message = "";
+		// 비밀번호 정규 표현식과 일치하는 지 확인
+		boolPassword = regexPass.test(val);
+		
+		if(boolPassword){
+			message = "사용가능한 비밀번호입니다.";
+		}else{
+			message = "특수문자 포함 영문/숫자 조합 8~16자이내 작성";
+		}
+		showMessage(elP, message, boolPassword);
+	};
+	
+	var boolPassCheck = false;
+	
+	re_pw.onkeyup = function(){
+		let val = this.value;
+		let originalPass = u_pw.value;
+		
+		let elP = this.nextElementSibling;
+		let message = "비밀번호가 일치하지 않습니다.";
+		// 비밀번호 작성란의 형식에 맞게끔 작성을 했는지 여부 확인
+		if(boolPassword){
+			if(val == originalPass){
+				boolPassCheck = true;
+				message = "비밀번호가 일치합니다.";
+			}
+		}else{
+			boolPassCheck = false;
+			message = "비밀번호를 먼저 확인해 주세요.";
+		}
+		showMessage(elP,message, boolPassCheck);
+	};
+	
+	
+	
+	// 회원 가입 버튼 클릭 시 각 요소의 입력값 검증 여부 확인 
+	document.querySelector("#joinBtn").onclick = function(){
+		
+		if(!boolUid){
+			alert("id(이메일)정보를 확인해주세요.");
+			document.querySelector("#u_id").focus();
+		}else if (!boolPassword){
+			alert("비밀번호를 확인해주세요.");
+			u_pw.focus();
+		}else if(!boolPassCheck){
+			alert("비밀번호가 일치하는지 확인해주세요.");
+			re_pw.focus();
+		}else{
+			// joinForm tag submit 이벤트 실행
+			document.querySelector("#joinForm").submit();
+		}
+		
+	};
+	
 </script>
 <jsp:include page="/common/footer.jsp" />
-
-
-
-
-
