@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>jsp_17_file_upload_download</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- result.jsp Servlet의 Multipart-config -->
+	<servlet>
+		<servlet-name>uploadFile</servlet-name>
+		<!-- <servlet-class></servlet-class> -->
+		<jsp-file>/result.jsp</jsp-file>
+		<multipart-config>
+			<location>C://Temp</location>
+			<!-- 1024 * 1024 * 10mb -->
+			<!-- upload할 수 있는 최대 파일 크기 -->
+			<max-file-size>10485760</max-file-size>
+			<max-request-size>52428800</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadFile</servlet-name>
+		<url-pattern>/result</url-pattern>
+	</servlet-mapping>
+
+</web-app>
