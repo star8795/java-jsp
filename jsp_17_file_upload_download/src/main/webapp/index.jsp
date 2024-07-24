@@ -17,5 +17,17 @@
 		<input type="text" name="test"/><br/>
 		<button>업로드</button>
 	</form>
+	<h1>BLOB file upload</h1>
+	<form action="test" method="POST" enctype="multipart/form-data">
+		<input type="file" name="imageFile" accept="image/*" /><br/>
+		<input type="text" name="id" required />
+		<button>submit</button>
+	</form>
+	<hr/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
 </body>
 </html>
