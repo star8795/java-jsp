@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%-- sendMail.jsp  --%>
-<%@ page import="javax.mail.*, javax.mail.internet.*, api.*" %>
+<%@ page import="jakarta.mail.*, jakarta.mail.internet.*, api.*" %>
 <%
 
 	// 사용자 메일 인증에 사용할 코드	

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!-- javascript_ajax.jsp -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -156,3 +157,15 @@
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

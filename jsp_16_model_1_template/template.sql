@@ -23,3 +23,23 @@ CREATE TABLE IF NOT EXISTS digital_member(
 	u_visit_date TIMESTAMP NOT NULL DEFAULT now(),	-- 최종 방문일(마지막 로그인)
 	u_withdraw char(1) DEFAULT 'n'					-- 회원 탈퇴 여부(회원정보 숨김)   
 );
+
+SELECT * FROM digital_member;
+
+
+SELECT TIMESTAMPDIFF(SECOND, u_visit_date, now()) AS diff FROM digital_member 
+WHERE u_no = 1;
+
+SELECT TIME_FORMAT(
+(TIMESTAMPDIFF(SECOND, u_visit_date, now())), '%H:%m:%s'
+) AS diff FROM digital_member 
+WHERE u_no = 1;
+
+SELECT (SELECT TIMESTAMPDIFF(SECOND, u_visit_date, now()) AS diff FROM digital_member 
+WHERE u_no = 1) / 60 / 60 / 24;
+
+
+
+
+
+

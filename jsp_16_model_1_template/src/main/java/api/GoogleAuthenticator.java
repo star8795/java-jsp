@@ -5,13 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
+import jakarta.mail.Authenticator;
+import jakarta.mail.PasswordAuthentication;
 
-public class GoogleAuthenticator extends Authenticator{
-	
+public class GoogleAuthenticator extends Authenticator {
+
 	PasswordAuthentication passwordAuthentication;
-	
+
 	public GoogleAuthenticator() {
 		
 		try {
@@ -22,8 +22,8 @@ public class GoogleAuthenticator extends Authenticator{
 			String pass = prop.getProperty("gmail_pass");
 			// new PasswordAuthentication("계정", "비밀번호");
 			System.out.println("auth : " + auth);
-			System.out.println("pass : " + pass );
-			passwordAuthentication = new PasswordAuthentication("star879518@gmail.com", "khty egiw enfa mkji");
+			System.out.println("pass : " + pass);
+			passwordAuthentication = new PasswordAuthentication(auth,pass);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -37,11 +37,27 @@ public class GoogleAuthenticator extends Authenticator{
 	}
 	
 	public Properties getProp() {
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		return props;
+ 		Properties p = new Properties();
+ 		p.put("mail.smtp.host","smtp.gmail.com");
+ 		p.put("mail.smtp.auth", "true");
+ 		p.put("mail.smtp.port", "587");
+ 		p.put("mail.smtp.starttls.enable", "true");
+ 		return p;
 	}
+	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

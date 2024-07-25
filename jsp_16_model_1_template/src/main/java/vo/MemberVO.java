@@ -152,3 +152,13 @@ public class MemberVO {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
