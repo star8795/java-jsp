@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/kimkihwan94/3team.git"/>
 		<item value="file://C:\Users\admin\git\java-jsp"/>
 	</list>
 	<list key="CommitDialog.authorValues">
@@ -8,6 +9,11 @@
 	</list>
 	<list key="CommitDialog.committerValues">
 		<item value="star8795 &lt;star8795@naver.com&gt;"/>
+	</list>
+	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
 	</list>
 	<section name="SmartImportGitWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="706"/>

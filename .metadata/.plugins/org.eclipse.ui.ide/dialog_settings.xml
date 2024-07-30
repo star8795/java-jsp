@@ -14,6 +14,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\admin\Desktop\project_2024.07.25-동하"/>
+			<item value="C:\Users\admin\git\java-jsp\project_2024.07.25 14시업데이트"/>
+			<item value="C:\Users\admin\git\java-jsp\jsp_16_model_1_template"/>
 			<item value="\\10.100.205.231\public\pilot project\조별 제출 자료\3조_\새 폴더\project_2024.07.16"/>
 			<item value="\\10.100.205.231\public\pilot project\조별 제출 자료\3조_\새 폴더"/>
 			<item value="C:\Users\admin\Desktop\project_2024.07.16"/>

@@ -103,6 +103,7 @@ ${cookie.u_asfadfasd}
 				<li><a href="${context}/board/notice/notice_list.jsp">공지사항</a></li>
 				<li><a href="${context}/board/qna/qna_list.jsp">질문과답변</a></li>
 				<li><a href="${path}/javascript_ajax.jsp">AJAX</a></li>
+				<li><a href="${path}/sms.jsp">cool sms</a></li>
 			</ul>
 		</div>
 	</header>

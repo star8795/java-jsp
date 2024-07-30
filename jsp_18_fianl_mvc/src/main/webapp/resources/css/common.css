@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+
+section {
+	min-height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin: 50px auto;
+}
+
+table tr td {
+	padding: 5px;
+}
+
+table tr td:first-child {
+	text-align: left;
+}
+
+table tr td:last-child {
+	text-align: center;
+}
