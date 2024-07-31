@@ -170,8 +170,35 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberDTO getMemberById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberDTO member = null;
+		this.setConnection();
+		
+		String sql = "SELECT * FROM mvc_member WHERE id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberDTO(
+					rs.getInt(1),			// num
+					rs.getString(2),		// id
+					rs.getString(3),		// pass
+					rs.getString(4),		// name
+					rs.getInt(5),			// age
+					rs.getString(6),		// gender
+					rs.getTimestamp(7),		// regdate
+					rs.getTimestamp(8)		// updatedate
+				);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.close();
+		}
+		
+		return member;
 	}
 
 }

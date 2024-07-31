@@ -41,6 +41,12 @@ public class MemberController extends HttpServlet{
 			nextPage = "/member/join.jsp";
 		}
 		
+		if(command.equals("/logOut.mc")) {
+			System.out.println(" 로그아웃 요청 처리 ");
+			ms.logOut(req, resp);
+			resp.sendRedirect(contextPath+"/login.mc");
+		}
+		
 		
 		if(nextPage != null) {
 			RequestDispatcher rd = req.getRequestDispatcher(nextPage);
@@ -90,20 +96,3 @@ public class MemberController extends HttpServlet{
 	} // end doPost
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

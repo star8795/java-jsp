@@ -1,8 +1,11 @@
 package service;
 
+import java.util.Base64;
+
 import dao.MemberDAO;
 import dao.MemberDAOImpl;
 import dto.MemberDTO;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -42,6 +45,17 @@ public class MemberServiceImpl implements MemberService{
 		if(member != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", member);
+			
+			if(login != null) {
+				byte[] bytes = Base64.getEncoder().encode(id.getBytes());
+				System.out.println("원본 아이디 : " + id);
+				id = new String(bytes);
+				System.out.println("encoding id : " + id);
+				Cookie cookie = new Cookie("id", member.getId());
+				cookie.setMaxAge(60 * 60 * 24 * 7);
+				cookie.setPath("/");
+				response.addCookie(cookie);
+			}
 			return true;
 		}
 		

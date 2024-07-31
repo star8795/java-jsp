@@ -32,7 +32,10 @@
 			<c:choose>
 				<c:when test="${!empty sessionScope.member}">
 					<li>
-						<a href="info.mc">${member.name}</a>님 방가 //(- -)
+						<a href="info.mc">${member.name}</a>님 반갑습니다.
+					</li>
+					<li>
+						<a href="logOut.mc">로그아웃</a>
 					</li>
 				</c:when>
 				<c:otherwise>
@@ -49,6 +52,3 @@
 		</ul>
 	</div>
 </header>
-
-
-

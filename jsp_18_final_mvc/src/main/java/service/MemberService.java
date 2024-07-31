@@ -44,18 +44,3 @@ public interface MemberService {
 	void logOut(HttpServletRequest request, HttpServletResponse response);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
