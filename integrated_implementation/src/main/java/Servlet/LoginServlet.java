@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         try {
-            // JDBC 드라이버 로드
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new ServletException("JDBC 드라이버 로드 실패", e);
@@ -31,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 한글 인코딩 처리
+
         request.setCharacterEncoding("UTF-8");
 
         // 폼 데이터 가져오기

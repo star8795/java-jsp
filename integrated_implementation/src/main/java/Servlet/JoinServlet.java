@@ -72,6 +72,8 @@ public class JoinServlet extends HttpServlet {
                 insertStmt.setString(5, phone);
                 insertStmt.executeUpdate();
             }
+            
+            System.out.println("MemberVO {id=" + id + ", name=" + name + ", addr=" + addr + ", phone=" + phone + "}");
 
             // 성공 메시지 표시
             response.setContentType("text/html; charset=UTF-8");
