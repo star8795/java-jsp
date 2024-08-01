@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Comforter Brush', 'Nanum Gothic', sans-serif;
+	width: 900px;
+	margin: auto;
+}
+
+header {
+	height: 100px;
+	border-bottom: 1px solid #ccc;
+}
+
+header div {
+	overflow: hidden;
+}
+
+ul {
+	list-style: none;
+	float: right;
+	height: 50px;
+	line-height: 50px;
+}
+
+ul li {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+ul li a {
+	text-decoration: none;
+	color: #000;
+}
+
+ul li a:hover {
+	color: #ccc;
+	cursor: pointer;
+}
+
+li.async {
+	position: relative;
+}
+
+li.async div.asyncWrap {
+	position: absolute;
+	display: none;
+	margin-top: 50px;
+}
+
+li.async div.asyncWrap ul li {
+	clear: both;
+	height: 40px;
+	text-align: center;
+	padding-left: 0;
+}
+
+li.async:hover div.asyncWrap {
+	display: block;
+}

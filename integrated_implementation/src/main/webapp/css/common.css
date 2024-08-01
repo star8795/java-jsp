@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+
+/* main.jsp */
+h1.main {
+	text-align: center;
+	height: 500px;
+	line-height: 500px;
+}
+/* common */
+section{
+	height: 500px;
+}
+
+table{
+	text-align: center;
+	margin: 0 auto;	
+}
+
+table tr td{
+	padding:5px;
+}
+
+table tr td:first-child {
+	text-align:left;
+}
+
+table tr td:last-child {
+	text-align:center;
+}
+
+
+/* join.jsp */
+table.join, table.info {
+	padding-top: 100px;
+}
+
+
+/* login.jsp */
+table.login {
+	padding-top: 150px;
+	width:270px;
+}
+
+
