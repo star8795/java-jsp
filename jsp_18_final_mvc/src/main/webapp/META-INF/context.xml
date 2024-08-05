@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- context.xml -->
+<Context>
+	
+	<!-- 
+		DBCP
+		DataBase Connection Pool
+		
+		Connection 객체 생성
+		1. 애플리케이션에서 DB Driver 클래스를 조회
+		2. DB Driver DB와 TCP/IP 커넥션 연결
+		3. DB Driver TCP/IP 커넥션이 연겷되면 url, 아이디, 패스워드 정보를 DB에 전달
+		4. DB 서버에서 내부 인증을 거친 후 내부에 DB를 생성
+		5. DB는 커넥션 생성이 완료되었다는 응답을 보냄.
+		6. DB Driver는 커넥션 객체를 생성해서 클라이언트(Web Server)에 반환
+		
+		DBCP 의 장점
+		DB 접속 설정 객체를 미리 만들어 연결 - 메모리 상에 등록해 놓음
+		불필요한 작업(커넥션 생성, 삭제)이 사라지므로 클라이언트가 빠르게 DB에 접속이 가능
+		
+		DB Connection 수를 제한 할 수 있어서 과도한 접속으로 인한 서버 자원 고갈을 방지 한다.
+		
+		연결(사용)이 끝난 Connection을 재사용함으로 새로 객체를 만드는 비용을 줄일 수 있다.
+		
+		DB 접속 모듈을 공통화하여 DB 서버환경이 바뀐 경우(마이그레이션) 쉬운 유지보수가 가능하다.
+	 -->
+	
+	<!-- name 이름 으로 구분되는 프로젝트에 하나뿐인 객체 등록 -->
+	
+	<Resource 
+		name="jdbc/MySQLDB" 
+		type="javax.sql.DataSource" 
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+		driverClassName="com.mysql.cj.jdbc.Driver"  
+		url="jdbc:mysql://localhost:3306/digital_jsp" 
+		username="digital" 
+		password="1234" 
+		initialSize="10" 
+		minIdle="10" 
+		maxActive="100" 
+		maxWait="60000"/>
+	
+</Context>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

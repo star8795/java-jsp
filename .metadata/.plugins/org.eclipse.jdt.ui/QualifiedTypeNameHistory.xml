@@ -26,4 +26,6 @@
     <fullyQualifiedTypeName name="java.util.Base64"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="VO.MemberVO"/>
+    <fullyQualifiedTypeName name="service.NoticeService"/>
+    <fullyQualifiedTypeName name="controller.NoticeController"/>
 </qualifiedTypeNameHistroy>

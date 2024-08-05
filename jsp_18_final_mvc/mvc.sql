@@ -46,3 +46,12 @@ DELIMITER ;
 SELECT * FROM mvc_member;
 
 DELETE FROM mvc_member WHERE num = 5; 
+
+
+
+
+
+
+
+
+

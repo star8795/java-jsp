@@ -144,7 +144,7 @@
 
       
       
-      <Context docBase="integrated_implementation" path="/integrated_implementation" reloadable="true" source="org.eclipse.jst.jee.server:integrated_implementation"/></Host>
+      </Host>
     </Engine>
   </Service>
 </Server>
