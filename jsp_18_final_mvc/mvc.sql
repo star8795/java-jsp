@@ -101,6 +101,4 @@ VALUES('내일 비오나요? 냉무','제곧내',6);
 
 SELECT LAST_INSERT_ID();
 
-
-
 commit;

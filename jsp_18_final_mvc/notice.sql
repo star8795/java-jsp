@@ -62,15 +62,3 @@ INSERT INTO notice_board (
 		notice_content, notice_date 
 	FROM notice_board
 );
-
-
-
-
-
-
-
-
-
-
-
-
