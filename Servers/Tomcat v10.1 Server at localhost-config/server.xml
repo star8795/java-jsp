@@ -144,7 +144,7 @@
 
       
       
-      </Host>
+      <Context docBase="jsp_18_final_mvc" path="/jsp_18_final_mvc" reloadable="true" source="org.eclipse.jst.jee.server:jsp_18_final_mvc"/></Host>
     </Engine>
   </Service>
 </Server>
