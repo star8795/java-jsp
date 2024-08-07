@@ -10,8 +10,9 @@ public class NoticeVO {
 	private String notice_title;
 	private String notice_content;
 	private Date notice_date;
-	
-	public NoticeVO() {}
+
+	public NoticeVO() {
+	}
 
 	public NoticeVO(int notice_num, String notice_category, String notice_author, String notice_title,
 			String notice_content, Date notice_date) {

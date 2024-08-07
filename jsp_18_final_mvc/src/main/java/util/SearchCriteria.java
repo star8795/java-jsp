@@ -1,14 +1,13 @@
 package util;
 
-public class SearchCriteria extends Criteria{
+public class SearchCriteria extends Criteria {
 	/*
-	private int page;
-	private int perPageNum;
-	*/
-	
+	 * private int page; private int perPageNum;
+	 */
+
 	private String searchName;
 	private String searchValue;
-	
+
 	public SearchCriteria(int page, int perPageNum, String searchName, String searchValue) {
 		super(page, perPageNum);
 		this.searchName = searchName;
@@ -36,5 +35,5 @@ public class SearchCriteria extends Criteria{
 		return "SearchCriteria [searchName=" + searchName + ", searchValue=" + searchValue + ", toString()="
 				+ super.toString() + "]";
 	}
-	
+
 }
