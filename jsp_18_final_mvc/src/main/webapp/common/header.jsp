@@ -49,10 +49,20 @@
 		<ul>
 			<!-- board/notice/notice_list.jsp 페이지 로 이동 -->
 			<li><a href="notice.do">공지사항</a></li>
-			<li><a href="">질문과답변</a></li>
+			<li><a href="boardList.qna">질문과답변</a></li>
 		</ul>
 	</div>
 </header>
+
+
+
+
+
+
+
+
+
+
 
 
 

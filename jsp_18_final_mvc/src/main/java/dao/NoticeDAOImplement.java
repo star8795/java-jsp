@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import util.DBCPUtil;
 import util.PageMaker;
+import util.SearchCriteria;
 import vo.NoticeVO;
 
 public class NoticeDAOImplement implements NoticeDAO {
@@ -234,14 +235,76 @@ public class NoticeDAOImplement implements NoticeDAO {
 
 	@Override
 	public int getSearchListCount(String searchName, String searchValue) {
-		// TODO Auto-generated method stub
-		return 0;
+		int listCount = 0;
+		
+		conn = DBCPUtil.getConnection();
+		
+		String sql = "SELECT count(*) FROM notice_board ";
+		
+		if(searchName.equals("title")){
+			sql += "WHERE notice_title LIKE CONCAT('%',?,'%')";
+		}else {
+			// author
+			sql += "WHERE notice_author LIKE CONCAT('%',?,'%')";
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, searchValue);
+			resultSet = pstmt.executeQuery();
+			if(resultSet.next()) {
+				listCount = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCPUtil.close(resultSet,pstmt,conn);
+		}
+		return listCount;
 	}
 
 	@Override
 	public ArrayList<NoticeVO> getSearchNoticeList(PageMaker pageMaker) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<NoticeVO> noticeList = new ArrayList<>();
+		SearchCriteria cri = (SearchCriteria)pageMaker.getCri();
+		
+		conn = DBCPUtil.getConnection();
+		
+		String sql = "SELECT * FROM notice_board ";
+		
+		if(cri.getSearchName().equals("title")) {
+			sql +=" WHERE notice_title LIKE ? ";
+		}else {
+			sql +=" WHERE notice_author LIKE ? ";
+		}
+		
+		sql +=" ORDER BY notice_num DESC limit ?, ?";
+		
+		try {
+			// '%searchValue%'
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+cri.getSearchValue()+"%");
+			pstmt.setInt(2, cri.getPageStart());
+			pstmt.setInt(3, cri.getPerPageNum());
+			
+			resultSet = pstmt.executeQuery();
+			
+			while(resultSet.next()) {
+				noticeList.add(new NoticeVO(
+					resultSet.getInt("notice_num"),
+					resultSet.getString("notice_category"),
+					resultSet.getString("notice_author"),
+					resultSet.getString("notice_title"),
+					resultSet.getString("notice_content"),
+					resultSet.getTimestamp("notice_date")
+				));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(resultSet, pstmt, conn);
+		}
+		return noticeList;
 	}
 
 }

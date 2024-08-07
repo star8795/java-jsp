@@ -7,6 +7,8 @@ import dao.NoticeDAOImplement;
 import jakarta.servlet.http.HttpServletRequest;
 import util.Criteria;
 import util.PageMaker;
+import util.SearchCriteria;
+import util.SearchPageMaker;
 import vo.NoticeVO;
 
 public class NoticeServiceImplement implements NoticeService {
@@ -60,8 +62,9 @@ public class NoticeServiceImplement implements NoticeService {
 		// 전체 게시물 개수
 		int totalCount = dao.getListCount();
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(totalCount);
+		pageMaker.setCri(cri);
+		pageMaker.setDisplayPageNum(10);
 		
 		request.setAttribute("pageMaker", pageMaker);
 		
@@ -102,8 +105,40 @@ public class NoticeServiceImplement implements NoticeService {
 
 	@Override
 	public ArrayList<NoticeVO> search(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		int page = 1;
+		int perPageNum = 10;
+		
+		String paramPage = request.getParameter("page");
+		String paramPerPageNum = request.getParameter("perPageNum");
+		String searchName = request.getParameter("searchName");
+		String searchValue = request.getParameter("searchValue");
+		
+		if(paramPage != null) {
+			page = Integer.parseInt(paramPage);
+		}
+		
+		if(paramPerPageNum != null) {
+			perPageNum = Integer.parseInt(paramPerPageNum);
+		}
+		
+		Criteria cri = new SearchCriteria(page,perPageNum,searchName,searchValue);
+		
+		// paging 처리 블럭에 필요한 객체 생성
+		PageMaker pm = new SearchPageMaker();
+		pm.setCri(cri);   			// table 에서 행정보 검색 기준
+		pm.setDisplayPageNum(5);	// 페이지번호 출력 개수
+		
+		int totalCount = dao.getSearchListCount(searchName, searchValue);
+		
+		pm.setTotalCount(totalCount);
+		
+		request.setAttribute("pageMaker", pm);
+		
+		// 검색된 게시글 목록
+		ArrayList<NoticeVO> noticeList = dao.getSearchNoticeList(pm);
+		
+		
+		return noticeList;
 	}
 
 }

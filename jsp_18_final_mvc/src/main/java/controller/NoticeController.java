@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.NoticeService;
 import service.NoticeServiceImplement;
+import util.FactoryUtil;
 import vo.NoticeVO;
 
 @WebServlet("*.do")
@@ -25,10 +26,13 @@ public class NoticeController extends HttpServlet {
 		
 		// *.do pattern에서 어떤 요청이 들어왔는지 분류
 		// contextPath를 포함한 전체 요청 경로
+		/*
 		String requestURI = request.getRequestURI();
 		// 변경 가능한 프로젝트별 요청 경로(path)
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length() + 1);
+		*/
+		String command = FactoryUtil.getCommand(request); 
 		System.out.println("공지 Controller 요청 정보 : " + command);
 		
 		String nextPage = null;

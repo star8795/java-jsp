@@ -45,8 +45,23 @@ SELECT * FROM notice_board WHERE notice_title LIKE '%동%';
 -- setString(1,"서울")
 -- SELECT * FROM notice_board WHERE notice_title LIKE '%+'서울'+%';
 SELECT * FROM notice_board
-WHERE notice_title LIKE CONCAT('%','서울','%');
-WHERE notice_author LIKE CONCAT('%','서울','%');
+WHERE notice_title LIKE CONCAT('%','서울','%') 
+ORDER BY notice_num DESC limit 0, 15;
+
+SELECT count(*) FROM notice_board 
+-- WHERE notice_title LIKE CONCAT('%','로또','%'); 
+WHERE notice_author LIKE CONCAT('%','로또','%');
+
+-- WHERE notice_author LIKE CONCAT('%','서울','%');
+
+
+INSERT INTO notice_board (
+	SELECT 
+		null, notice_category, 
+		notice_author, notice_title, 
+		notice_content, notice_date 
+	FROM notice_board
+);
 
 
 

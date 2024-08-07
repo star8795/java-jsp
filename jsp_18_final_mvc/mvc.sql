@@ -47,6 +47,66 @@ SELECT * FROM mvc_member;
 
 DELETE FROM mvc_member WHERE num = 5; 
 
+/******************************************************************************/
+-- 등록된 회원이면 참여 가능한 답변형 게시물 정보를 저장할 table
+CREATE TABLE qna_board(
+	qna_num INT PRIMARY KEY AUTO_INCREMENT,					-- 글번호
+	qna_title VARCHAR(200) NOT NULL,						-- 게시글 제목
+	qna_content TEXT NOT NULL,								-- 글 내용
+	qna_writer_num INT NOT NULL,							-- 작성자 회원번호
+	qna_readcount INT DEFAULT 0,							-- 조회 수
+	qna_date TIMESTAMP DEFAULT NOW()						-- 게시글 작성시간
+);
+
+
+ALTER TABLE qna_board ADD COLUMN qna_re_ref INT NOT NULL DEFAULT 0; -- 원본글 번호
+
+DESC qna_board;
+
+
+SELECT * FROM v_qna_board;
+
+CREATE OR REPLACE VIEW v_qna_board AS 
+SELECT
+	Q.qna_num AS qnaNum,
+	M.name AS qnaName,
+	Q.qna_title AS qnaTitle,
+	Q.qna_content AS qnaContent,
+	Q.qna_writer_num AS qnaWriterNum,
+	Q.qna_readcount AS qnaReadCount,
+	Q.qna_date AS qnaDate,
+	Q.qna_re_ref AS qnaReRef
+FROM qna_board AS Q JOIN mvc_member AS M 
+ON Q.qna_writer_num = M.num;
+
+DESC v_qna_board;
+
+SELECT * FROM v_qna_board WHERE qnaNum = 1;
+
+
+SELECT Q.*, M.name AS qna_name FROM qna_board AS Q, mvc_member AS M 
+WHERE Q.qna_writer_num = M.num;
+
+
+SELECT B.*, (SELECT name FROM mvc_member WHERE num = B.qna_writer_num) AS qna_name 
+FROM qna_board AS B WHERE qna_num = 1;
+
+-- qnaReRef column 의 번호를 게시글 번호로 수정
+UPDATE v_qna_board SET qnaReRef = qnaNum;
+
+commit;
+
+INSERT INTO v_qna_board(qnaTitle, qnaContent,qnaWriterNum) 
+VALUES('내일 비오나요? 냉무','제곧내',6);
+
+SELECT LAST_INSERT_ID();
+
+
+
+commit;
+
+
+
 
 
 

@@ -20,6 +20,13 @@
 						<input type="text" name="searchValue"/>
 						<input type="submit" value="검색"/>
 					</form>
+					<form>
+						<select name="perPageNum" onchange="this.form.submit();">	
+							<c:forEach var="i" begin="10" end="30" step="5">
+								<option value="${i}" ${pageMaker.cri.perPageNum eq i ? 'selected' : ''}>${i}개씩 보기</option>
+							</c:forEach>
+						</select>
+					</form>
 					<c:if test="${member.id eq 'admin'}">
 						<a href="noticeWriteForm.do">공지글 작성</a>
 					</c:if>
@@ -64,20 +71,21 @@
 						 -->
 						 <!-- 현재 요청한 페이지 번호가 1page가 아니면 -->
 						<c:if test="${pageMaker.cri.page != 1}">
-							<a href="?page=1">[처음]</a>
+							<a href="${pageMaker.makeQuery(1)}">[처음]</a>
 							<c:if test="${pageMaker.prev}">
 								<!-- 이전 페이지 블럭이 존재하면 -->
-								<a href="?page=${pageMaker.startPage - 1}">[이전]</a>
+								<a href="${pageMaker.makeQuery(pageMaker.startPage - 1)}">[이전]</a>
 							</c:if>
 						</c:if>
 						<c:forEach var="i" begin="${pageMaker.startPage}" end="${pageMaker.endPage}" step="1">
-							<a href="?page=${i}">[${i}]</a>
+							<%-- <a href="?page=${i}&perPageNum=${pageMaker.cri.perPageNum}">[${i}]</a> --%>
+							<a href="${pageMaker.makeQuery(i)}">[${i}]</a>
 						</c:forEach>
 						<c:if test="${pageMaker.cri.page < pageMaker.maxPage}">
 							<c:if test="${pageMaker.next}">
-								<a href="?page=${pageMaker.endPage + 1}">[다음]</a>
+								<a href="${pageMaker.makeQuery(pageMaker.endPage + 1)}">[다음]</a>
 							</c:if>
-							<a href="?page=${pageMaker.maxPage}">[마지막]</a>
+							<a href="${pageMaker.makeQuery(pageMaker.maxPage)}">[마지막]</a>
 						</c:if>
 					</div>
 				</td>

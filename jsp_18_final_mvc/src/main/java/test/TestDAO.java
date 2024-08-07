@@ -20,13 +20,19 @@ public class TestDAO {
 		System.out.println("test 수행 전");
 	}
 	
-	@Test // 이 메소드가 테스트하기 위한 기능을 정의 메소드 임을 명시
+	@Test
+	public void getSearchTotalCount() {
+		int totalCount = dao.getSearchListCount("author", "M");
+		System.out.println("totalCount : " + totalCount);
+	}
+	
+	// @Test // 이 메소드가 테스트하기 위한 기능을 정의 메소드 임을 명시
 	public void getAllListTest() {
 		List<NoticeVO> noticeList = dao.getAllList();
 		System.out.println(noticeList);
 	}
 	
-	@Test
+	// @Test
 	public void noticeWriteTest() {
 		for(int i = 0; i < 100; i++) {
 			NoticeVO vo = new NoticeVO();

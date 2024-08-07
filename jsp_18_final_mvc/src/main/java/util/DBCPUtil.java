@@ -19,12 +19,15 @@ public class DBCPUtil {
 			DataSource ds = (DataSource) context.lookup("java:comp/env/jdbc/MySQLDB");
 			conn = ds.getConnection();
 			*/
+			
+			// Test
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/digital_jsp",
 					"digital",
 					"1234"
 			);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
