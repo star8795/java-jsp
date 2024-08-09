@@ -10,8 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 // @WebServlet("*.do")
 public class NoticeControllerBackup extends HttpServlet {
-
+	
 	private static final long serialVersionUID = 1L;
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,10 +26,11 @@ public class NoticeControllerBackup extends HttpServlet {
 		// 요청 처리 실패 시 보여줄 화면
 		String fail = "/board/notice/notice_fail.jsp";
 
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 	}
 }

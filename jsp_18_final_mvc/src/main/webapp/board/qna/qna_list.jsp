@@ -23,6 +23,8 @@
 			<th>작성시간</th>
 			<th>조회수</th>
 			<th>Ref</th>
+			<th>seq</th>
+			<th>lev</th>
 		</tr>
 		<c:choose>
 			<c:when test="${!empty boardList}">
@@ -31,12 +33,22 @@
 					<tr>
 						<td>${board.qnaNum}</td>
 						<td>
+							<!-- 답변글 표현 -->
+							<c:if test="${board.qnaReLev != 0}">
+								<c:forEach begin="1" end="${board.qnaReLev}">
+									&nbsp;&nbsp;&nbsp;
+								</c:forEach>
+								└>
+							</c:if>
 							<a href="boardDetail.qna?qnaNum=${board.qnaNum}">${board.qnaTitle}</a>
+							
 						</td>
 						<td>${board.qnaName}</td>
 						<td>${board.qnaDate}</td>
 						<td>${board.qnaReadCount}</td>
 						<td>${board.qnaReRef}</td>
+						<td>${board.qnaReSeq}</td>
+						<td>${board.qnaReLev}</td>
 					</tr>
 				</c:forEach>
 				<!-- 페이징 블럭 -->

@@ -11,5 +11,15 @@ public interface FactoryUtil {
 	public static String getCommand(HttpServletRequest request) {
 		return request.getRequestURI().substring(request.getContextPath().length() + 1);
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+

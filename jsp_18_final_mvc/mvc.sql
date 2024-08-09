@@ -61,8 +61,13 @@ CREATE TABLE qna_board(
 
 ALTER TABLE qna_board ADD COLUMN qna_re_ref INT NOT NULL DEFAULT 0; -- 원본글 번호
 
-DESC qna_board;
+ALTER TABLE qna_board 
+ADD COLUMN qna_re_seq INT NOT NULL DEFAULT 0 AFTER qna_re_ref; 		-- 답변글 정렬 번호
 
+ALTER TABLE qna_board 
+ADD COLUMN qna_re_lev INT NOT NULL DEFAULT 0 AFTER qna_re_seq;      -- 답변글 view 번호
+
+DESC qna_board;
 
 SELECT * FROM v_qna_board;
 
@@ -75,7 +80,9 @@ SELECT
 	Q.qna_writer_num AS qnaWriterNum,
 	Q.qna_readcount AS qnaReadCount,
 	Q.qna_date AS qnaDate,
-	Q.qna_re_ref AS qnaReRef
+	Q.qna_re_ref AS qnaReRef,
+	Q.qna_re_seq AS qnaReSeq,
+	Q.qna_re_lev AS qnaReLev
 FROM qna_board AS Q JOIN mvc_member AS M 
 ON Q.qna_writer_num = M.num;
 
@@ -92,13 +99,27 @@ SELECT B.*, (SELECT name FROM mvc_member WHERE num = B.qna_writer_num) AS qna_na
 FROM qna_board AS B WHERE qna_num = 1;
 
 -- qnaReRef column 의 번호를 게시글 번호로 수정
-UPDATE v_qna_board SET qnaReRef = qnaNum;
+UPDATE v_qna_board SET qnaReRef = qnaNum, qnaReSeq = 0;
 
 commit;
 
 INSERT INTO v_qna_board(qnaTitle, qnaContent,qnaWriterNum) 
-VALUES('내일 비오나요? 냉무','제곧내',6);
+VALUES('내일 비오나요?진짜 진짜 냉무','제곧내',6);
 
 SELECT LAST_INSERT_ID();
 
+UPDATE v_qna_board SET qnaReRef = LAST_INSERT_ID() 
+WHERE qnaNum = LAST_INSERT_ID();
+
 commit;
+
+
+
+
+
+
+
+
+
+
+

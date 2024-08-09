@@ -1,0 +1,12 @@
+<Context>
+    <Resource name="jdbc/MyDB"
+              auth="Container"
+              type="jakarta.sql.DataSource"
+              username="root"
+              password="1234"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/project_test"
+              maxActive="20"
+              maxIdle="10"
+              maxWait="-1"/>
+</Context>

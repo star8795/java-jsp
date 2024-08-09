@@ -12,7 +12,7 @@ import util.SearchPageMaker;
 import vo.NoticeVO;
 
 public class NoticeServiceImplement implements NoticeService {
-
+	
 	NoticeDAO dao = new NoticeDAOImplement();
 
 	@Override
@@ -31,33 +31,33 @@ public class NoticeServiceImplement implements NoticeService {
 		notice.setNotice_author(notice_author);
 		notice.setNotice_title(notice_title);
 		notice.setNotice_content(notice_content);
-
+		
 		return dao.noticeWrite(notice);
 	}
 
 	@Override
 	public ArrayList<NoticeVO> noticeList(HttpServletRequest request) {
-
-		// 파라미터로 전달된 page 정보에 따라
+		
+		// 파라미터로 전달된 page 정보에 따라 
 		// 시작인덱스 번호와 한번에 보여줄 게시글 개수에 따라 게시글 목록 반환
 		int page = 1;
 		String pageParam = request.getParameter("page");
-		if (pageParam != null) {
+		if(pageParam != null) {
 			page = Integer.parseInt(pageParam);
 		}
-
+		
 		// 한번에 보여줄 게시물 개수
 		int perPageNum = 10;
 		String strPerPageNum = request.getParameter("perPageNum");
-		if (strPerPageNum != null) {
+		if(strPerPageNum != null) {
 			perPageNum = Integer.parseInt(strPerPageNum);
 		}
-
+		
 		// page 처리된 게시글 목록
-		Criteria cri = new Criteria(page, perPageNum);
+		Criteria cri = new Criteria(page,perPageNum);
 		System.out.println(cri);
 		ArrayList<NoticeVO> noticeList = dao.getNoticeList(cri.getPageStart(), perPageNum);
-
+		
 		// page 처리된 게시글 목록을 이동할 수 있는 페이지 블럭 정보
 		// 전체 게시물 개수
 		int totalCount = dao.getListCount();
@@ -65,9 +65,9 @@ public class NoticeServiceImplement implements NoticeService {
 		pageMaker.setTotalCount(totalCount);
 		pageMaker.setCri(cri);
 		pageMaker.setDisplayPageNum(10);
-
+		
 		request.setAttribute("pageMaker", pageMaker);
-
+		
 		return noticeList;
 	}
 
@@ -86,14 +86,14 @@ public class NoticeServiceImplement implements NoticeService {
 		String notice_author = request.getParameter("notice_author");
 		String notice_title = request.getParameter("notice_title");
 		String notice_cotnent = request.getParameter("notice_content");
-
+		
 		NoticeVO n = new NoticeVO();
 		n.setNotice_num(notice_num);
 		n.setNotice_category(notice_category);
 		n.setNotice_author(notice_author);
 		n.setNotice_title(notice_title);
 		n.setNotice_content(notice_cotnent);
-
+		
 		return dao.noticeUpdate(n);
 	}
 
@@ -107,37 +107,42 @@ public class NoticeServiceImplement implements NoticeService {
 	public ArrayList<NoticeVO> search(HttpServletRequest request) {
 		int page = 1;
 		int perPageNum = 10;
-
+		
 		String paramPage = request.getParameter("page");
 		String paramPerPageNum = request.getParameter("perPageNum");
 		String searchName = request.getParameter("searchName");
 		String searchValue = request.getParameter("searchValue");
-
-		if (paramPage != null) {
+		
+		if(paramPage != null) {
 			page = Integer.parseInt(paramPage);
 		}
-
-		if (paramPerPageNum != null) {
+		
+		if(paramPerPageNum != null) {
 			perPageNum = Integer.parseInt(paramPerPageNum);
 		}
-
-		Criteria cri = new SearchCriteria(page, perPageNum, searchName, searchValue);
-
+		
+		Criteria cri = new SearchCriteria(page,perPageNum,searchName,searchValue);
+		
 		// paging 처리 블럭에 필요한 객체 생성
 		PageMaker pm = new SearchPageMaker();
-		pm.setCri(cri); // table 에서 행정보 검색 기준
-		pm.setDisplayPageNum(5); // 페이지번호 출력 개수
-
+		pm.setCri(cri);   			// table 에서 행정보 검색 기준
+		pm.setDisplayPageNum(5);	// 페이지번호 출력 개수
+		
 		int totalCount = dao.getSearchListCount(searchName, searchValue);
-
+		
 		pm.setTotalCount(totalCount);
-
+		
 		request.setAttribute("pageMaker", pm);
-
+		
 		// 검색된 게시글 목록
 		ArrayList<NoticeVO> noticeList = dao.getSearchNoticeList(pm);
-
+		
+		
 		return noticeList;
 	}
 
 }
+
+
+
+
