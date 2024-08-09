@@ -25,6 +25,7 @@
 			<th>Ref</th>
 			<th>seq</th>
 			<th>lev</th>
+			<th>del</th>
 		</tr>
 		<c:choose>
 			<c:when test="${!empty boardList}">
@@ -40,7 +41,15 @@
 								</c:forEach>
 								└>
 							</c:if>
-							<a href="boardDetail.qna?qnaNum=${board.qnaNum}">${board.qnaTitle}</a>
+							<c:choose>
+								<c:when test="${board.qnaDelete eq 'n'}">
+									<!-- 조회수 증가 후 상세보기 페이지로 이동 -->
+									<a href="boardRead.qna?qnaNum=${board.qnaNum}">${board.qnaTitle}</a>
+								</c:when>
+								<c:otherwise>
+									삭제된 게시글 입니다.
+								</c:otherwise>
+							</c:choose>
 							
 						</td>
 						<td>${board.qnaName}</td>
@@ -49,10 +58,33 @@
 						<td>${board.qnaReRef}</td>
 						<td>${board.qnaReSeq}</td>
 						<td>${board.qnaReLev}</td>
+						<td>${board.qnaDelete}</td>
 					</tr>
 				</c:forEach>
 				<!-- 페이징 블럭 -->
-				
+				<c:if test="${!empty pm}">
+					<tr>
+						<td colspan="9">
+							<div class="pageWrap">
+								<c:if test="${pm.cri.page ne 1}">
+									<a href="?page=1">[처음]</a>
+									<c:if test="${pm.prev}">
+										<a href="?page=${pm.startPage - 1}">[이전]</a>
+									</c:if>
+								</c:if>
+								<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+									<a href="?page=${i}">[${i}]</a>
+								</c:forEach>
+								<c:if test="${pm.endPage ne pm.maxPage}">
+									<c:if test="${pm.next}">
+										<a href="?page=${pm.endPage + 1}">[다음]</a>
+									</c:if>
+									<a href="?page=${pm.maxPage}">[마지막]</a>
+								</c:if>
+							</div>
+						</td>
+					</tr>
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<tr>

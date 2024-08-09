@@ -67,6 +67,10 @@ ADD COLUMN qna_re_seq INT NOT NULL DEFAULT 0 AFTER qna_re_ref; 		-- 답변글 �
 ALTER TABLE qna_board 
 ADD COLUMN qna_re_lev INT NOT NULL DEFAULT 0 AFTER qna_re_seq;      -- 답변글 view 번호
 
+-- 게시글 삭제 요청 여부
+ALTER TABLE qna_board 
+ADD COLUMN qna_delete enum('y','n') DEFAULT 'n' AFTER qna_re_lev;
+
 DESC qna_board;
 
 SELECT * FROM v_qna_board;
@@ -82,7 +86,8 @@ SELECT
 	Q.qna_date AS qnaDate,
 	Q.qna_re_ref AS qnaReRef,
 	Q.qna_re_seq AS qnaReSeq,
-	Q.qna_re_lev AS qnaReLev
+	Q.qna_re_lev AS qnaReLev,
+	Q.qna_delete AS qnaDelete
 FROM qna_board AS Q JOIN mvc_member AS M 
 ON Q.qna_writer_num = M.num;
 
@@ -114,7 +119,18 @@ WHERE qnaNum = LAST_INSERT_ID();
 commit;
 
 
-
+CREATE TABLE qna_board(
+	qna_num INT PRIMARY KEY AUTO_INCREMENT,					-- 글번호
+	qna_title VARCHAR(200) NOT NULL,						-- 게시글 제목
+	qna_content TEXT NOT NULL,								-- 글 내용
+	qna_writer_num INT NOT NULL,							-- 작성자 회원번호
+	qna_readcount INT DEFAULT 0,							-- 조회 수
+	qna_date TIMESTAMP DEFAULT NOW(),						-- 게시글 작성시간
+	qna_re_reg INT DEFAULT 0,								-- 답변글 그룹 번호
+	qna_re_seq INT DEFAULT 0,								-- 답변글 정렬 번호
+	qna_re_lev INT DEFAULT 0,								-- 답변글 view 깊이 번호
+	qna_delete ENUM('y','n') DEFAULT 'n'					-- 게시글 삭제 여부
+);
 
 
 

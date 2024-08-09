@@ -14,6 +14,14 @@ public class BoardVO {
 	private int qnaReRef;			// 원본 글 번호 추가
 	private int qnaReSeq;			// 답변 글 정렬 번호 추가
 	private int qnaReLev;			// 답변 글 view level 번호
+	private String qnaDelete;		// 게시글 삭제 여부
+	
+	public String getQnaDelete() {
+		return qnaDelete;
+	}
+	public void setQnaDelete(String qnaDelete) {
+		this.qnaDelete = qnaDelete;
+	}
 	
 	public int getQnaReLev() {
 		return qnaReLev;

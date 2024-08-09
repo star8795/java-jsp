@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import dao.QnABoardDAO;
 import jakarta.servlet.http.HttpServletRequest;
+import util.Criteria;
+import util.PageMaker;
 import vo.BoardVO;
 
 public class QnABoardService {
@@ -92,6 +94,48 @@ public class QnABoardService {
 		vo.setQnaReLev(qnaReLev);
 		
 		dao.boardReply(vo);
+	}
+
+	/**
+	 * @param request - 페이징 처리에 필요한 페이지 번호
+	 * @return ArrayList<BoardVO> - 페이징 처리된 게시글 목록
+	 */
+	public ArrayList<BoardVO> boardPageList(HttpServletRequest request) {
+		
+		int page = 1;
+		
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		Criteria cri = new Criteria(page, 10);
+		
+		ArrayList<BoardVO> boardList = dao.getBoardList(cri);
+		
+		// 전체 게시물 개수 
+		int listCount = dao.getListCount();
+		
+		PageMaker pm = new PageMaker();
+		pm.setDisplayPageNum(5);
+		pm.setCri(cri);
+		pm.setTotalCount(listCount);
+		
+		request.setAttribute("pm", pm);
+		
+		return boardList;
+	}
+
+	/**
+	 * @param request - 조회수를 증가 시킬 게시글 번호
+	 * @return int - 게시글 번호
+	 */
+	public int updateReadCount(HttpServletRequest request) {
+		
+		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+		
+		dao.updateReadCount(qnaNum);
+		
+		return qnaNum;
 	}
 	
 }
