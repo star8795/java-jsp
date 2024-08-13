@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/* footer.css */
+footer {
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid #ccc;
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- context.xml -->
+<Context>
+	
+	<Resource 
+		name="jdbc/MySQLDB" 
+		type="javax.sql.DataSource" 
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+		driverClassName="com.mysql.cj.jdbc.Driver"  
+		url="jdbc:mysql://localhost:3306/digital_jsp" 
+		username="digital" 
+		password="1234" 
+		initialSize="10" 
+		minIdle="10" 
+		maxActive="100" 
+		maxWait="60000"/>
+	
+</Context>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

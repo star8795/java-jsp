@@ -144,7 +144,7 @@
 
       
       
-      </Host>
+      <Context docBase="ImplementingAnInterface" path="/ImplementingAnInterface" reloadable="true" source="org.eclipse.jst.jee.server:ImplementingAnInterface"/></Host>
     </Engine>
   </Service>
 </Server>
