@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+/* footer row */
+
+header {
+	border-bottom:1px solid #ccc;
+}
+
+footer{
+	border-top:1px solid #ccc;
+}
+.footerRow{
+	height:200px;
+}
+
+.footerRow h1, .footerRow h2, .footerRow  h3, .footerRow  h4, .footerRow  h5{
+	text-align:center;
+	height:200px;
+	line-height:200px;
+}
+
+header .nav {
+	width:100%;	
+}
+
+header .nav.full-right{
+	justify-content: flex-end;
+}
+
+.container section{
+	padding-top:50px;
+	padding-bottom:50px;
+	min-height:500px;
+}
+
+.table th, .table td{
+	text-align:center;
+}
+
+.table tr:first-child td{
+	text-align:right;
+}
+
+.table tr td:nth-child(3){
+	text-align:left;
+}
+
+h1{
+	text-align:center;
+}
