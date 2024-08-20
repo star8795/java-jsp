@@ -37,4 +37,5 @@
     <fullyQualifiedTypeName name="vo.BoardVO"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="util.DBCPUtil"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
 </qualifiedTypeNameHistroy>

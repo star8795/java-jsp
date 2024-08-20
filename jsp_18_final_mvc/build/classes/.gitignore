@@ -1,6 +1,9 @@
 /controller/
 /dao/
+/dto/
 /filters/
 /service/
+/servlets/
+/test/
 /util/
 /vo/

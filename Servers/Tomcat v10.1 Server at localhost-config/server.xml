@@ -144,7 +144,7 @@
 
       
       
-      <Context docBase="ImplementingAnInterface" path="/ImplementingAnInterface" reloadable="true" source="org.eclipse.jst.jee.server:ImplementingAnInterface"/></Host>
+      <Context docBase="application_test_error" path="/application_test_error" reloadable="true" source="org.eclipse.jst.jee.server:application_test_error"/></Host>
     </Engine>
   </Service>
 </Server>
